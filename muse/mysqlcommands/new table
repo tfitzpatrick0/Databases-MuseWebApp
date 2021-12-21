@@ -1,0 +1,34 @@
+CREATE TABLE youtube_l_dl (
+id varchar(100),
+name varchar(100),
+likes int(11),
+dislikes int(11)
+);
+
+load data local infile '/var/www/html/cse30246/muse/track_final.csv'
+into table youtube_l_dl
+fields terminated by ','
+enclosed by '"'
+lines terminated by '\n'
+ignore 1 rows;
+
+select x.name, x.likes, x.dislikes, y.name, y.id from youtube_l_dl as x, trackexp as y where x.id=y.id limit 5;
+------
+
+CREATE TABLE youtube_like_dl (
+id varchar(100),
+name varchar(100),
+likes int(11),
+dislikes int(11)
+);
+
+load data local infile '/var/www/html/cse30246/muse/track_lower.csv'
+into table youtube_like_dl
+fields terminated by ','
+enclosed by '"'
+lines terminated by '\n'
+ignore 1 rows;
+
+ALTER TABLE youtube_like_dl
+  ADD CONSTRAINT youtube_like_dl_pk 
+    PRIMARY KEY (id);

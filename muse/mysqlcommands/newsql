@@ -1,0 +1,38 @@
+CREATE TABLE trackexp(
+id varchar(100),
+name varchar(100),
+album varchar(200),
+album_id varchar(200),
+artists varchar(200),
+artist_ids varchar(200),
+track_number int(11),
+disc_number int(11),
+explicit varchar(200),
+danceability decimal(5,4),
+energy decimal(5,4),
+ky int(11),
+loudness decimal(5,4),
+mode int(11),
+speechiness decimal(5,4),
+acousticness decimal(5,4),
+instrumentalness varchar(15),
+liveness decimal(5,4),
+valence decimal(5,4),
+tempo decimal(8,4),
+duration_ms varchar(20),
+time_signature int(11),
+year char(4),
+release_date char(7)
+);
+
+load data local infile '/var/www/html/cse30246/muse/tracks_features2.csv'
+into table trackexp
+fields terminated by ','
+enclosed by '"'
+lines terminated by '\n'
+ignore 1 rows;
+
+
+
+select x.likes, x.dislikes, x.name, x.channelName, x.channelURL from youtube_video_data,
+(select name, likes, dislikes, channelURL, channelName from youtube_video_data, trackexp where title like name)x;

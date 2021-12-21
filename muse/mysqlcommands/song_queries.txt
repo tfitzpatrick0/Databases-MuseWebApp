@@ -1,0 +1,34 @@
+Song Information
+  Album: Shape of You
+  Track Number: 1
+  Explicit: False
+  Release Date: 1/6/17
+  Likes: 1000
+  Dislikes: 100
+
+
+select y.album, y.track_number, y.explicit, y.release_date, x.likes, x.dislikes from youtube_l_dl as x, trackexp as y where x.id="0FE9t6xYkqWXU2ahLh6D8X" and x.id=y.id \G
+
+*************************** 1. row ***************************
+       album: Shape of You
+track_number: 1
+    explicit: FALSE
+release_date: 1/6/17
+       likes: 1160346
+    dislikes: 1671406
+1 row in set (0.00 sec)
+
+
+LINE BY LINE
+select y.album from youtube_l_dl as x, trackexp as y where x.id="0FE9t6xYkqWXU2ahLh6D8X" and x.id=y.id';
+select y.track_number from youtube_l_dl as x, trackexp as y where x.id="0FE9t6xYkqWXU2ahLh6D8X" and x.id=y.id';
+select y.explicit from youtube_l_dl as x, trackexp as y where x.id="0FE9t6xYkqWXU2ahLh6D8X" and x.id=y.id';
+select y.release_date from youtube_l_dl as x, trackexp as y where x.id="0FE9t6xYkqWXU2ahLh6D8X" and x.id=y.id';
+select x.likes from youtube_l_dl as x, trackexp as y where x.id="0FE9t6xYkqWXU2ahLh6D8X" and x.id=y.id';
+select x.dislikes from youtube_l_dl as x, trackexp as y where x.id="0FE9t6xYkqWXU2ahLh6D8X" and x.id=y.id';
+
+
+
+FOR PIE CHART DATA VALUES
+select likes from youtube_l_dl where id="0FE9t6xYkqWXU2ahLh6D8X";        1160346
+select dislikes from youtube_l_dl where id="0FE9t6xYkqWXU2ahLh6D8X";     1671406
