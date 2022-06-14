@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 $servername = "localhost";
 $username = "hjeon";
@@ -13,7 +13,7 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
-?>
+?> -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +23,8 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Muse Home</title>
     <link rel="stylesheet" href="css/sty.css">
-	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-	  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="app.js"></script>
@@ -32,22 +32,22 @@ try {
 </head>
 
 <body onload="onPageLoad()" class="bkg_im">
-  <header>
-      <div class="container_h">
-      <h3 class="logo">MUSE Home</h3>
+<header>
+    <div class="container_h">
+    <h3 class="logo">MUSE Home</h3>
 
         <nav>
-          <ul>
-            <li><a style="font-weight:bold" href="http://db.cse.nd.edu/cse30246/muse/">Home</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/devplan.html">DevPlan</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/project.html">About</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/login.php">Admin</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/oauth.php">Login</a></li>
+            <ul>
+            <li><a style="font-weight:bold" href="http://local.muse">Home</a></li>
+            <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
+            <li><a href="http://local.muse/project.html">About</a></li>
+            <li><a href="http://local.muse/login.php">Admin</a></li>
+            <li><a href="http://local.muse/oauth.php">Login</a></li>
 
-          </ul>
+            </ul>
         </nav>
-      </div>
-    </header>
+    </div>
+</header>
 
     <h1></h1>
 
