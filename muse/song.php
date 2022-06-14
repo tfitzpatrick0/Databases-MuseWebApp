@@ -1,9 +1,9 @@
 <?php
 $id = $_GET['song_id'];
 $servername = "localhost";
-$username = "hjeon";
-$password = "na0103Yeh|";
-$db = "hjeon";
+$username = "root";
+$password = "stingrays";
+$db = "muse";
 $conn = NULL;
 
 try {
@@ -92,11 +92,11 @@ tr:nth-child(even) {
 
         <nav>
           <ul>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/">Home</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/devplan.html">DevPlan</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/project.html">About</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/login.php">Admin</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/oauth.php">Login</a></li>
+            <li><a href="http://local.muse/">Home</a></li>
+            <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
+            <li><a href="http://local.muse/project.html">About</a></li>
+            <li><a href="http://local.muse/login.php">Admin</a></li>
+            <li><a href="http://local.muse/oauth.php">Login</a></li>
           </ul>
         </nav>
       </div>
@@ -107,7 +107,7 @@ tr:nth-child(even) {
     <div class="container-fluid">
 
     <div>
-        <button class="btn btn-outline-success" type="submit" onclick="window.location.href = 'http://db.cse.nd.edu/cse30246/muse/index.php';">Return to Search</button>
+        <button class="btn btn-outline-success" type="submit" onclick="window.location.href = 'http://local.muse/index.php';">Return to Search</button>
     <div class="mb-3">
         <label for="devices" class="form-label">Devices</label>
         <select id="devices" class="form-control">

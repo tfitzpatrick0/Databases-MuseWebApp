@@ -1,19 +1,19 @@
-<!-- <?php
+<?php
 
 $servername = "localhost";
-$username = "hjeon";
-$password = "na0103Yeh|";
+$username = "root";
+$password = "stingrays";
 $conn = NULL;
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=hjeon", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=muse", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //echo "Connected successfully";
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
 
-?> -->
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,20 +38,19 @@ try {
 
         <nav>
             <ul>
-            <li><a style="font-weight:bold" href="http://local.muse">Home</a></li>
-            <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
-            <li><a href="http://local.muse/project.html">About</a></li>
-            <li><a href="http://local.muse/login.php">Admin</a></li>
-            <li><a href="http://local.muse/oauth.php">Login</a></li>
-
+                <li><a style="font-weight:bold" href="http://local.muse/">Home</a></li>
+                <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
+                <li><a href="http://local.muse/project.html">About</a></li>
+                <li><a href="http://local.muse/login.php">Admin</a></li>
+                <li><a href="http://local.muse/oauth.php">Login</a></li>
             </ul>
         </nav>
     </div>
 </header>
 
-    <h1></h1>
+<h1></h1>
 
-  <div>
+<div>
     <div class="content-container-full">
         <div class="row">
             <h2>Song Search:</h2>
@@ -103,7 +102,7 @@ try {
             $.ajax({
                 type: 'POST',
                 data: {'searched_song_name': searchText},
-                url: 'http://db.cse.nd.edu/cse30246/muse/requestHandler.php',
+                url: 'http://local.muse/requestHandler.php',
                 success:function(response){
                     var data = JSON.parse(response);
                     console.log(data);
@@ -136,7 +135,7 @@ try {
     <div class="footer">
         <p>MUSE Inc.</p>
     </div>
-  </div>
+</div>
 
 </body>
 
