@@ -14,3 +14,4 @@ FILES MODIFIED:
 - devplan.html -> changed redirects
 - project.html -> changed redirects
 - login.php (ADMIN) -> changed redirects (admin login?)
+- demo.php -> changed redirects
