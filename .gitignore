@@ -1,4 +1,4 @@
 .DS_Store
 
-# sql file
-./sql/muse_db.sql
+# sql files
+muse/sql/*.sql
