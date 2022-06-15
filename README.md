@@ -13,3 +13,4 @@ FILES MODIFIED:
 - song.php -> changed redirects/sql login
 - devplan.html -> changed redirects
 - project.html -> changed redirects
+- login.php (ADMIN) -> changed redirects (admin login?)

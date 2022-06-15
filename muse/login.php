@@ -1,9 +1,9 @@
 
 <?php
 	$servername = "localhost";
-	$username = "hjeon";
-	$password = "na0103Yeh|";
-	$db = "hjeon";
+	$username = "root";
+	$password = "stingrays";
+	$db = "muse";
 	$conn = NULL;
 	
 	try {
@@ -26,25 +26,25 @@
 		$query = mysqli_query($conn, "SELECT * FROM login_data WHERE username = '$username_entered' and password = '$password_entered'");
 		$count = mysqli_num_rows($query);
 		// if username_entered and password_entered pair available in login_data
-//TempData["LoggedIn"]='False';
+		//TempData["LoggedIn"]='False';
 		session_start();
 		if ($count == 1) {
 			$_SESSION['loggedon'] = '1';
 			if ($username_entered == 'admin') {
 				//TODO: admin, admin2, admin3, admin4 etc
 				//echo "You are now on the Admin page";
-				header('Location: http://db.cse.nd.edu/cse30246/muse/demo.php');
-	//echo file_get_contents('http://db.cse.nd.edu/cse30246/muse/demo.php');
-	//TempData["LoggedIn"]='True';
+				header('Location: http://local.muse/demo.php');
+				//echo file_get_contents('http://local.muse/demo.php');
+				//TempData["LoggedIn"]='True';
 			} else {
 				//echo "Howdy $username_entered! Thanks for visiting Muse again!";
-				header('Location: http://db.cse.nd.edu/cse30246/muse/demo.php');
+				header('Location: http://local.muse/demo.php');
 			}
 		} else { // if pair not found
 			$_SESSION['loggedon'] = '0';
 			$error = "Incorrect username or password";
 			//echo "<br/>";
-			//echo "<a href = 'http://db.cse.nd.edu/cse30246/muse/login.php'>Back to login.php</a>";
+			//echo "<a href = 'http://local.muse/login.php'>Back to login.php</a>";
 		}
 		//unset($_SESSION['loggedon']);
 		//session_destroy();
@@ -100,11 +100,11 @@
 
         <nav>
           <ul>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/">Home</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/devplan.html">DevPlan</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/project.html">About</a></li>
-            <li><a style="font-weight:bold" href="http://db.cse.nd.edu/cse30246/muse/login.php">Admin</a></li> <!-- CHANGE to login.php -->
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/oauth.php">Login</a></li> <!-- NEED TO CHANGE NAV links, login for oauth -->
+            <li><a href="http://local.muse/">Home</a></li>
+            <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
+            <li><a href="http://local.muse/project.html">About</a></li>
+            <li><a style="font-weight:bold" href="http://local.muse/login.php">Admin</a></li> <!-- CHANGE to login.php -->
+            <li><a href="http://local.muse/oauth.php">Login</a></li> <!-- NEED TO CHANGE NAV links, login for oauth -->
 
           </ul>
         </nav>
@@ -128,14 +128,14 @@
                   <p>Please login to your account</p>
 
                   <div class="form-outline mb-4">
-				  	<label for = "Username">Username</label>
+				  					<label for = "Username">Username</label>
                     <input type="text" name="Username" class="form-control">
                   </div>
 
                   <div class="form-outline mb-4">
-				  	<label for = "Password">Password</label>
+				  					<label for = "Password">Password</label>
                     <input type="password" name="Password" class="form-control"  />
-					<p style="color:red;"><?php echo $error; ?></p>
+										<p style="color:red;"><?php echo $error; ?></p>
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
@@ -144,7 +144,7 @@
 
                   <div class="d-flex align-items-center justify-content-center pb-4">
                     <p class="mb-0 me-2">Don't have an admin account?</p>
-                    <a href="http://db.cse.nd.edu/cse30246/muse/add_admin.php" class = "btn btn-outline-success" role="button">Create New</a>
+                    <a href="http://local.muse/add_admin.php" class="btn btn-outline-success" role="button">Create New</a>
                   </div>
 
                 </form>
@@ -169,7 +169,7 @@
 	
 
   <h2>Add a New Moderator</h2>
-  <a href="http://db.cse.nd.edu/cse30246/muse/add_admin.php" class = "btn btn-outline-success" role="button">Create New Moderator</a>
+  <a href="http://local.muse/add_admin.php" class = "btn btn-outline-success" role="button">Create New Moderator</a>
 
 	-->
 </body>
