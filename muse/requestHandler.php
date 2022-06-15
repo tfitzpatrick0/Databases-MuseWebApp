@@ -1,9 +1,8 @@
 <?php
-
 		$servername = "localhost";
-		$username = "hjeon";
-		$password = "na0103Yeh|";
-		$db = "hjeon";
+		$username = "root";
+		$password = "stingrays";
+		$db = "muse";
 		$conn = NULL;
 
 		try {
@@ -25,5 +24,5 @@
 			while($row = mysqli_fetch_assoc($query)) {
 				array_push($results, $row);
 			}
-            echo json_encode($results);
-        }
+      echo json_encode($results);
+    }

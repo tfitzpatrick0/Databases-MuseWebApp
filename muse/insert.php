@@ -11,9 +11,9 @@ Resources consulted:
 	<?php
 
 		$servername = "localhost";
-		$username = "hjeon";
-		$password = "na0103Yeh|";
-		$db = "hjeon";
+		$username = "root";
+		$password = "stingrays";
+		$db = "muse";
 		$conn = NULL;
 
 		try {
@@ -69,7 +69,7 @@ Resources consulted:
 			}
 		}
 		echo "<br/>";
-		echo "<a href = 'http://db.cse.nd.edu/cse30246/muse/demo.php'>Back to demo.php</a>";
+		echo "<a href = 'http://local.muse/demo.php'>Back to demo.php</a>";
 //		}
 		$conn->close();
 

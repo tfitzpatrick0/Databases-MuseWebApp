@@ -12,9 +12,9 @@ Resources consulted:
 	<?php
 
 		$servername = "localhost";
-		$username = "hjeon";
-		$password = "na0103Yeh|";
-		$db = "hjeon";
+		$username = "root";
+		$password = "stingrays";
+		$db = "muse";
 		$conn = NULL;
 
 		try {
@@ -26,14 +26,15 @@ Resources consulted:
 		if (isset($_POST['song_id_to_delete'])) {
 			$song_id = $_POST['song_id_to_delete'];
 			if (trim($song_id, " ") == "") {
-				header("Location: http://db.cse.nd.edu/cse30246/muse/demo.php");
+				header("Location: http://local.muse/demo.php");
 				exit;
 			} else {
 				$query = mysqli_query($conn, "SELECT * FROM track3 WHERE id = '$song_id'");
 				$count = mysqli_num_rows($query);
 				if ($count == 0) {
 					//TODO: display error message "No ID  matches $song_id"
-					header("Location: http://db.cse.nd.edu/cse30246/muse/demo.php");
+					echo "<h1>No ID matches $song_id</h1>";
+					header("Location: http://local.muse/demo.php");
 				} else {
 					echo "To Be Deleted";
 					echo "<table border='1'><tr><th>Song Title</th><th>Song ID</th><th>Album</th><th>Artists</th></tr>";

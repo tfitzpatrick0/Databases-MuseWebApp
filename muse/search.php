@@ -19,9 +19,9 @@ Resources consulted:
 	<?php
 
 		$servername = "localhost";
-		$username = "hjeon";
-		$password = "na0103Yeh|";
-		$db = "hjeon";
+		$username = "root";
+		$password = "stingrays";
+		$db = "muse";
 		$conn = NULL;
 
 		try {
@@ -84,6 +84,6 @@ Resources consulted:
 		
 	</script>
 	<br/>
-	<a href = 'http://db.cse.nd.edu/cse30246/muse/demo.php'>Back to demo.php</a>
+	<a href = 'http://local.muse/demo.php'>Back to demo.php</a>
 </body>
 </html>

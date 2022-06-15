@@ -13,9 +13,9 @@
 
   <?php
     $servername = "localhost";
-    $username = "hjeon";
-    $password = "na0103Yeh|";
-    $db = "hjeon";
+		$username = "root";
+		$password = "stingrays";
+		$db = "muse";
     $conn = NULL;
 
     try {
@@ -29,11 +29,11 @@
 
         <nav>
           <ul>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/">Home</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/devplan.html">DevPlan</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/project.html">About</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/login.php">Admin</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/oauth.php">Login</a></li>
+            <li><a href="http://local.muse/">Home</a></li>
+            <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
+            <li><a href="http://local.muse/project.html">About</a></li>
+            <li><a href="http://local.muse/login.php">Admin</a></li>
+            <li><a href="http://local.muse/oauth.php">Login</a></li>
 
           </ul>
         </nav>
@@ -43,31 +43,31 @@
     <h1></h1>
 <div>
   <div class="container-fluid">
-<div>
-    <h4>Update [Song Name]</h4>
+    <div>
+      <h4>Update [Song Name]</h4>
 
-      <?php
-        if (isset($_POST['update_song_id']) and isset($_POST['update_track_number'])) {
-          $song_id = $_POST['update_song_id'];
-          $new_track_num = $_POST['update_track_number'];
+        <?php
+          if (isset($_POST['update_song_id']) and isset($_POST['update_track_number'])) {
+            $song_id = $_POST['update_song_id'];
+            $new_track_num = $_POST['update_track_number'];
 
-          echo "<h4>Song ID: $song_id</h4>";
-          echo "<div></div>";
-          echo "<h4>New Track Num: $new_track_num</h4>";
+            echo "<h4>Song ID: $song_id</h4>";
+            echo "<div></div>";
+            echo "<h4>New Track Num: $new_track_num</h4>";
 
-          echo "<h4>Updating track number...</h4>";
-          mysqli_query($conn, "UPDATE track3 SET track_number=$new_track_num WHERE id='$song_id'");
-        }
-      ?>
+            echo "<h4>Updating track number...</h4>";
+            mysqli_query($conn, "UPDATE track3 SET track_number=$new_track_num WHERE id='$song_id'");
+          }
+        ?>
 
       <br>
-
-</div>
-</div>
-    <div class="footer">
-        <p>MUSE Inc.</p>
+      <a href = 'http://local.muse/demo.php'>Back to demo.php</a>
     </div>
   </div>
+  <div class="footer">
+    <p>MUSE Inc.</p>
+  </div>
+</div>
 
 </body>
 </html>

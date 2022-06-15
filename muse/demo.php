@@ -7,12 +7,12 @@ if($_SESSION['loggedon'] != '1') {
 	exit;
 }
 $servername = "localhost";
-$username = "hjeon";
-$password = "na0103Yeh|";
+$username = "root";
+$password = "stingrays";
 $conn = NULL;
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=hjeon", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=muse", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //echo "Connected successfully";
 } catch(PDOException $e) {
@@ -41,11 +41,11 @@ try {
 
         <nav>
           <ul>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/">Home</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/devplan.html">DevPlan</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/project.html">About</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/login.php">Admin</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/oauth.php">Login</a></li>
+            <li><a href="http://local.muse/">Home</a></li>
+            <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
+            <li><a href="http://local.muse/project.html">About</a></li>
+            <li><a href="http://local.muse/login.php">Admin</a></li>
+            <li><a href="http://local.muse/oauth.php">Login</a></li>
           </ul>
         </nav>
       </div>
@@ -57,20 +57,20 @@ try {
 
       <div>
       <h3>Song Search:</h3>
-      <form class="d-flex" action = "http://db.cse.nd.edu/cse30246/muse/search.php" method ="post">
+      <form class="d-flex" action = "http://local.muse/search.php" method ="post">
       <input class="form-control me-2" type="text" name = "searched_song_name" placeholder="Enter the song name ..." aria-label="Search">
-          <button class="btn btn-outline-success" type="submit" onclick="window.location.href = 'http://db.cse.nd.edu/cse30246/muse/search.php';">Search</button>
+          <button class="btn btn-outline-success" type="submit" onclick="window.location.href = 'http://local.muse/search.php';">Search</button>
       </form>
       <br>
       #add search results here
 
       <h4>Update by Id</h4>
-      <form action = "http://db.cse.nd.edu/cse30246/muse/update.php" method="post">
+      <form action = "http://local.muse/update.php" method="post">
           <input class="form-control me-2" type="text" name = "update_song_id" placeholder="Enter song ID..." aria-label="Search">
           <input class="form-control me-2" type="text" name = "update_track_number" placeholder="Enter track number..." aria-label="Track num">
 
           <button type="submit" class="btn btn-outline-success"
-          onclick="window.location.href = 'http://db.cse.nd.edu/cse30246/muse/update.php';">
+          onclick="window.location.href = 'http://local.muse/update.php';">
           Update
           </button>
       </form>
@@ -78,21 +78,21 @@ try {
       <br>
 
       <h4>Delete by Id</h4>
-      <form action = "http://db.cse.nd.edu/cse30246/muse/delete.php" method = "post">
+      <form action = "http://local.muse/delete.php" method = "post">
       <input class="form-control" id="deleteId" name = "song_id_to_delete" type="text" placeholder="Song id" aria-label="default input delete">
-      <button type="submit" class="btn btn-outline-success" onclick="window.location.href = 'http://db.cse.nd.edu/cse30246/muse/delete.php';">Delete</button>
+      <button type="submit" class="btn btn-outline-success" onclick="window.location.href = 'http://local.muse/delete.php';">Delete</button>
       </form>
       <br>
       <br>
 
       <h4>Insert New Song</h4>
-      <form action = "http://db.cse.nd.edu/cse30246/muse/insert.php" method = "POST">
+      <form action = "http://local.muse/insert.php" method = "POST">
           <input class="form-control" name = "insert_song_name" type="text" placeholder="Song name" aria-label="default input name"/>
           <input class="form-control" name = "insert_album_name" type="text" placeholder="Album" aria-label="default input album"/>
           <input class="form-control" name = "insert_artist_name" type="text" placeholder="Artist" aria-label="default input artist"/>
           <input class="form-control" name = "insert_release_date" type="text" placeholder="Release date" aria-label="default input release date"/>
 
-      <button class="btn btn-outline-success" type="submit" onclick = "window.location.href = 'http://db.cse.nd.edu/cse30246/muse/insert.php';">Insert</button>
+      <button class="btn btn-outline-success" type="submit" onclick = "window.location.href = 'http://local.muse/insert.php';">Insert</button>
       </form>
     </div>
 
