@@ -21,3 +21,4 @@ FILES MODIFIED:
   - update.php -> added redirect back to demo
   - delete.php -> changed redirect back to demo (needs work)
   - insert.php -> changed redirect back to demo
+- oauth.php -> changed redirects

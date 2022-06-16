@@ -32,11 +32,11 @@
 
         <nav>
           <ul>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/">Home</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/devplan.html">DevPlan</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/project.html">About</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/login.php">Admin</a></li>
-            <li><a style="font-weight:bold" href="http://db.cse.nd.edu/cse30246/muse/oauth.php">Login</a></li>
+            <li><a href="http://local.muse/">Home</a></li>
+            <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
+            <li><a href="http://local.muse/project.html">About</a></li>
+            <li><a href="http://local.muse/login.php">Admin</a></li>
+            <li><a style="font-weight:bold" href="http://local.muse/oauth.php">Login</a></li>
           </ul>
         </nav>
       </div>
