@@ -27,5 +27,5 @@ FILES MODIFIED:
 
 TO DO:
 
-1. Improve the layout of index.php $
+1. Improve the layout of home page $
 2. Get Spotify API fully functional and improve the layout
