@@ -59,7 +59,7 @@
         <input type="text" class="form-control" id="clientSecret" placeholder="">
       </div>
 -->
-      <button class = "btn btn-outline-success" type = "submit" name = "button" onclick="requestAuthorization()" value = "Log in with Spotify">Log in with Spotify</button>
+      <button class="btn btn-outline-success" type="submit" name="button" onclick="requestAuthorization()" value ="Log in with Spotify">Log in with Spotify</button>
     </div>
 
 

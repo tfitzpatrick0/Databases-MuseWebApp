@@ -1,7 +1,9 @@
-var redirect_uri = "http://db.cse.nd.edu/cse30246/muse/";
+var redirect_uri = "http://local.muse/";
 
-var client_id = "094baaf717e948fc8ea9796c36c98fb7";
-var client_secret = "f9bde4669bb549aba1eba857be63b783";
+// var client_id = "094baaf717e948fc8ea9796c36c98fb7";
+// var client_secret = "f9bde4669bb549aba1eba857be63b783";
+var client_id = "41a7eeddd27f4614ad05359d0043a201";
+var client_secret = "41d4686cab51498f89c26b1aff0426e6";
 
 var access_token = null;
 var refresh_token = null;
@@ -28,10 +30,12 @@ function onPageLoad() {
 
   console.log(window.location.search);
 
+  // If a search parameter is present, it will contain the code to authorize access/refresh tokens for the Spotify user
   if (window.location.search.length > 0) {
     handleRedirect();
   } else {
     access_token = localStorage.getItem("access_token");
+    // Interact with Spotify user if the access token is stored
     if (access_token != null) {
       getUserInfo();
       //refreshPlaylists();

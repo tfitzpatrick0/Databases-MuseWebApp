@@ -28,4 +28,6 @@ FILES MODIFIED:
 TO DO:
 
 1. Improve the layout of home page $
-2. Get Spotify API fully functional and improve the layout
+2. Get Spotify API fully functional and improve the interactive layout
+
+CMD + SHIFT + R to refresh browser cache
