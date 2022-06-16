@@ -17,11 +17,11 @@
 
         <nav>
           <ul>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/">Home</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/devplan.html">DevPlan</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/project.html">About</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/login.php">Admin</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/oauth.php">Login</a></li>
+            <li><a href="http://local.muse/">Home</a></li>
+            <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
+            <li><a href="http://local.muse/project.html">About</a></li>
+            <li><a href="http://local.muse/login.php">Admin</a></li>
+            <li><a href="http://local.muse/oauth.php">Login</a></li>
 
           </ul>
         </nav>
@@ -32,9 +32,9 @@
 
 	<?php
 		$servername = "localhost";
-		$username = "hjeon";
-		$password = "na0103Yeh|";
-		$db = "hjeon";
+		$username = "root";
+		$password = "stingrays";
+		$db = "muse";
 		$conn = NULL;
 
 		try { // try mysql -p hjeon
@@ -81,9 +81,9 @@
 						echo "You are now on the Admin page";
             //$_SESSION['loggedIn']=true;
             //echo $_SESSION['loggedIn'];
-            //redirect_to('http://db.cse.nd.edu/cse30246/muse/mods.php');
+            //redirect_to('http://local.muse/mods.php');
 
-            header('Location: http://db.cse.nd.edu/cse30246/muse/mods.php');
+            header('Location: http://local.muse/mods.php');
 					} else {
 						echo "Username/Password not correct";
 					}
@@ -91,7 +91,7 @@
 					$_SESSION['admin_loggedon'] = '0';
 					echo "Username/Password not correct";
 					echo "<br/>";
-					echo "<a href = 'http://db.cse.nd.edu/cse30246/muse/add_admin.php'>Back to add_admin.php</a>";
+					echo "<a href = 'http://local.muse/add_admin.php'>Back to add_admin.php</a>";
 				}
 			}
 		}
