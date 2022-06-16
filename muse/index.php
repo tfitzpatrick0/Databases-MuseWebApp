@@ -14,6 +14,7 @@ try {
 }
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,12 +58,14 @@ try {
         </div>
         <div class="row">
             <div class="col">
-                <input id="searchText" class="form-control me-2" type="text" name="searched_song_name" placeholder="Enter the song name ..." aria-label="Search">
+                <input id="searchText" class="form-control me-2" type="text" name="searched_song_name" placeholder="Enter the song name..." aria-label="Search">
             </div>
             <div class="col">
-                <button id="searchButton" class="btn btn-outline-success" type="button" onclick="getTable();">Search</button>
+                <button id="searchButton" class="btn btn-outline-success" type="button" onclick="getTable()">Search</button>
             </div>
         </div>
+
+        <br />
 
         <div class="row">
 	        <table id="songTable" class="display"></table>
@@ -112,7 +115,7 @@ try {
                     $('#songTable').DataTable({
 			            data: data,
                         language: {
-                            "search": "Filter : "
+                            "search": "Filter: "
                         },
 			            columns: [
                             {"title": "Song Name", "data": "name",
