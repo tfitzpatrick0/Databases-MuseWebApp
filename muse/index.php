@@ -45,6 +45,7 @@ try {
                 </ul>
             </nav>
         </div>
+        <div class="black-line"></div>
     </header>
 
     <br />
@@ -55,10 +56,10 @@ try {
                 <h1>Song Search:</h1>
             </div>
             <div class="col">
-                <input class="input-text-field" type="text" name="searched_song_name" placeholder="Enter the song name..." aria-label="Search">
+                <input id="searchText" class="input-text-field" type="text" name="searched_song_name" placeholder="Enter the song name..." aria-label="Search">
             </div>
             <div class="col">
-                <button class="button standard-button" class="btn btn-outline-success" type="button" onclick="getTable()">Search</button>
+                <button id="searchButton" class="button standard-button" class="btn btn-outline-success" type="button" onclick="getTable()">Search</button>
             </div>
 
             <br />
@@ -127,12 +128,13 @@ try {
                 });
             }
         </script>
+    </div>
 
-        <br />
+    <br />
+    <br />
 
-        <div class="footer">
-            <p>MUSE Inc.</p>
-        </div>
+    <div class="footer">
+        <p>MUSE Inc.</p>
     </div>
 </body>
 </html>
