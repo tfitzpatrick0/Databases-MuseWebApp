@@ -22,7 +22,7 @@ SPOTIFY INTERACTIVE PAGE (uses API calls):
 
 ADMIN LOGIN - REDIRECTS TO demo.php:
 
-- login.php (ADMIN) -> changed redirects (admin login?)
+- login.php (ADMIN) -> changed redirects (add_admin.php and mods.php used to modify admin account data)
   - add_admin.php -> changed redirects
   - mods.php -> changed redirects
 
