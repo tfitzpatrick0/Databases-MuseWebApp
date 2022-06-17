@@ -46,7 +46,7 @@ STATIC HTML:
 TO DO:
 
 1. Get Spotify API fully functional $
-1. Improve the layout of home page
+1. Improve the layout of home page $
 1. Improve the layout of the Spotify interactive page
 1. Improve the layout of the Spotify login page
 1. Improve the layout of the demo page
