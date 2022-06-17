@@ -2,24 +2,34 @@ html {
   box-sizing: border-box;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0;
+}
+
+/* General styles (shared) */
 @import url("https://fonts.googleapis.com/css?family=Work+Sans:400,600");
 body {
   margin: 10px;
   background-color: white;
   font-family: "Work Sans", sans-serif;
-  font-weight: 800;
   height: 100%;
 }
 
-.empty_div {
-  height: 5vh;
+.col {
+  display: inline-block;
 }
 
+/* Header styles (shared) */
 header {
-  background: #55d6aa;
+  background-color: #55d6aa;
 }
 
-.container_h {
+.container-h {
   width: 90vw;
   height: 7vh;
   padding: 20px 20px;
@@ -52,9 +62,10 @@ nav li {
 }
 
 nav a {
+  display: block;
   color: #444;
   text-decoration: none;
-  display: block;
+  text-transform: uppercase;
 }
 
 nav a:hover {
@@ -62,11 +73,11 @@ nav a:hover {
 }
 
 nav a::before {
-  content: "";
+  width: 0%;
   display: block;
+  content: "";
   height: 3px;
   background-color: #444;
-  width: 0%;
   transition: all ease-in-out 250ms;
 }
 
@@ -74,8 +85,37 @@ nav a:hover::before {
   width: 100%;
 }
 
+/* Home page - song search */
+.content-container-full {
+  text-align: left;
+}
+
+#searchText {
+  padding: 12px 400px 12px 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#searchButton {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #55d6aa;
+  border-radius: 4px;
+  color: #55d6aa;
+  background-color: white;
+  transition: all ease-in-out 250ms;
+}
+
+#searchButton:hover {
+  color: white;
+  background-color: #55d6aa;
+  transition: all ease-in-out 250ms;
+}
+
 .footer {
-  padding: 10px;
+  padding: 20px;
   background-color: black;
   color: white;
   text-align: center;

@@ -34,7 +34,7 @@ try {
 
 <body onload="onPageLoad()">
     <header>
-        <div class="container_h">
+        <div class="container-h">
             <h1 class="logo">MUSE Home</h1>
             <nav>
                 <ul>
@@ -48,20 +48,18 @@ try {
         </div>
     </header>
 
-    <div class="empty_div"></div>
+    <br />
 
     <div>
         <div class="content-container-full">
-            <div class="row">
-                <h2>Song Search:</h2>
+            <div>
+                <h1>Song Search:</h1>
             </div>
-            <div class="row">
-                <div class="col">
-                    <input id="searchText" class="form-control me-2" type="text" name="searched_song_name" placeholder="Enter the song name..." aria-label="Search">
-                </div>
-                <div class="col">
-                    <button id="searchButton" class="btn btn-outline-success" type="button" onclick="getTable()">Search</button>
-                </div>
+            <div class="col">
+                <input id="searchText" class="form-control me-2" type="text" name="searched_song_name" placeholder="Enter the song name..." aria-label="Search">
+            </div>
+            <div class="col">
+                <button id="searchButton" class="btn btn-outline-success" type="button" onclick="getTable()">Search</button>
             </div>
 
             <br />
@@ -130,6 +128,8 @@ try {
                 });
             }
         </script>
+
+        <br />
 
         <div class="footer">
             <p>MUSE Inc.</p>
