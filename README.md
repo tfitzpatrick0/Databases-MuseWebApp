@@ -8,7 +8,6 @@ sql password - stingrays
 FILES MODIFIED:
 
 - CHANGED SQL LOGIN for EVERY LISTED .php file
-
 - ADDED sql directory with database info
 
 HOME PAGE:
@@ -49,6 +48,11 @@ TO DO:
 1. Improve the layout of home page $
 2. Get Spotify API fully functional $
 3. Improve the layout of the Spotify interactive page
-4.
+4. Improve the layout of the Spotify login page
+5. Improve the layout of the demo page
+6. Improve the layout of the admin login page
+7. Incorporate better functionality for the add_admin/mods files
+8. Improve the layout of static html pages?
+9. Clean up the database and unused files
 
 CMD + SHIFT + R to refresh browser cache
