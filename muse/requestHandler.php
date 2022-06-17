@@ -8,12 +8,11 @@
 		try {
 			$conn = mysqli_connect($servername, $username, $password, $db);
 		} catch (PDOException $e) { }
-	
         
 		if (isset($_POST['searched_song_name'])) {
 			$song_name = $_POST['searched_song_name'];
 			if (trim($song_name, " ") == "") {
-				echo "Note that results are truncated because searched title is blank";
+				// Display the first 300 songs in the database if the search parameter is blank
 				$query = mysqli_query($conn, "SELECT * FROM track3 LIMIT 300");
 				//$query = mysqli_query($conn, "SELECT * FROM tracks_features LIMIT 300");
 			} else {

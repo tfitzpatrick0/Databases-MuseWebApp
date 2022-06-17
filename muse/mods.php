@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 
 <!--  if (!isset($_SESSION['loggedIn'])){ FIGURE OUT HOW TO LOCK THIS IF NOT SET
-//    header('Location: http://db.cse.nd.edu/cse30246/muse/add_admin.php');
+//    header('Location: http://local.muse/add_admin.php');
 //    exit; -->
 
 <html>
@@ -30,11 +30,11 @@
 
         <nav>
           <ul>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/">Home</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/devplan.html">DevPlan</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/project.html">About</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/login.php">Admin</a></li>
-            <li><a href="http://db.cse.nd.edu/cse30246/muse/oauth.php">Login</a></li>
+            <li><a href="http://local.muse/">Home</a></li>
+            <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
+            <li><a href="http://local.muse/project.html">About</a></li>
+            <li><a href="http://local.muse/login.php">Admin</a></li>
+            <li><a href="http://local.muse/oauth.php">Login</a></li>
           </ul>
         </nav>
       </div>
@@ -44,9 +44,9 @@
 
 	<?php
 		$servername = "localhost";
-		$username = "hjeon";
-		$password = "na0103Yeh|";
-		$db = "hjeon";
+		$username = "root";
+		$password = "stingrays";
+		$db = "muse";
 		$conn = NULL;
 
 		try { // try mysql -p hjeon
@@ -90,7 +90,7 @@
 				} else { // if username is already in use
 					echo "Existing username/account";
 					echo "<br/>";
-					echo "<a href = 'http://db.cse.nd.edu/cse30246/muse/mods.php'>Back to mods.php</a>";
+					echo "<a href = 'http://local.muse/mods.php'>Back to mods.php</a>";
 				}
 			}
 		}
