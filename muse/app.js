@@ -8,6 +8,7 @@ var client_secret = "41d4686cab51498f89c26b1aff0426e6";
 var access_token = null;
 var refresh_token = null;
 var current_playlist = "";
+var current_artist_id = "";
 var user_id = "";
 
 const AUTHORIZE = "https://accounts.spotify.com/authorize";
@@ -15,8 +16,13 @@ const TOKEN = "https://accounts.spotify.com/api/token";
 
 const USER = "https://api.spotify.com/v1/me";
 const ADDPLAYLIST = "https://api.spotify.com/v1/users/{{UserId}}/playlists";
+const SEARCH = "https://api.spotify.com/v1/search";
 const PLAYLISTS = "https://api.spotify.com/v1/me/playlists";
 const TRACKS = "https://api.spotify.com/v1/playlists/{{PlaylistId}}/tracks";
+const TRACKBYID = "https://api.spotify.com/v1/tracks/{{SongId}}";
+const TOPTRACKS = "https://api.spotify.com/v1/artists/{{ArtistId}}/top-tracks";
+const RELARTISTS =
+  "https://api.spotify.com/v1/artists/{{ArtistId}}/related-artists";
 const FOLLOWING = "https://api.spotify.com/v1/me/following";
 const AUDIOFEATURES = "https://api.spotify.com/v1/audio-features/{{SongId}}";
 const DEVICES = "https://api.spotify.com/v1/me/player/devices";
@@ -146,6 +152,72 @@ function callApi(method, url, body, callback) {
   xhr.onload = callback;
 }
 
+// Search functions
+
+function searchArtist(param, t) {
+  callApi(
+    "GET",
+    SEARCH + "?q=" + param + "&type=" + t,
+    null,
+    handleSearchArtist
+  );
+}
+
+function handleSearchArtist() {
+  if (this.status == 200) {
+    var data = JSON.parse(this.responseText);
+    console.log(data);
+    addArtistId(data);
+
+    handle = "searched";
+    console.log(handle);
+  } else if (this.status == 401) {
+    refreshAccessToken();
+  } else {
+    console.log(this.responseText);
+    alert(this.responseText);
+  }
+}
+
+function addArtistId(data) {
+  artist_id = data.artists.items[0].id;
+  console.log(artist_id);
+  element = document.getElementById("artistId");
+  element.value = artist_id;
+}
+
+function searchAlbum(param, t) {
+  callApi(
+    "GET",
+    SEARCH + "?q=" + param + "&type=" + t,
+    null,
+    handleSearchAlbum
+  );
+}
+
+function handleSearchAlbum() {
+  if (this.status == 200) {
+    var data = JSON.parse(this.responseText);
+    console.log(data);
+    addAlbumId(data);
+
+    handle = "searched";
+    console.log(handle);
+  } else if (this.status == 401) {
+    refreshAccessToken();
+  } else {
+    console.log(this.responseText);
+    alert(this.responseText);
+  }
+}
+
+function addAlbumId(data) {
+  album_id = data.albums.items[0].id;
+  console.log(album_id);
+  element = document.getElementById("albumId");
+  element.value = album_id;
+}
+
 // Remove all items from dropdown field
 
 function removeAllItems(elementId) {
@@ -153,6 +225,38 @@ function removeAllItems(elementId) {
   while (node.firstChild) {
     node.removeChild(node.firstChild);
   }
+}
+
+// Create table header
+
+function tableHeader() {
+  removeAllItems("simsongs");
+
+  let th_row = document.createElement("tr");
+  let artist_heading = document.createElement("th");
+  let song_heading = document.createElement("th");
+
+  artist_heading.innerHTML = "Artist";
+  song_heading.innerHTML = "Song";
+
+  th_row.appendChild(artist_heading);
+  th_row.appendChild(song_heading);
+
+  document.getElementById("simsongs").appendChild(th_row);
+}
+
+function tableBody(artist, song) {
+  let th_row = document.createElement("tr");
+  let artist_body = document.createElement("td");
+  let song_body = document.createElement("td");
+
+  artist_body.innerHTML = artist;
+  song_body.innerHTML = song;
+
+  th_row.appendChild(artist_body);
+  th_row.appendChild(song_body);
+
+  document.getElementById("simsongs").appendChild(th_row);
 }
 
 // Get current user info
@@ -241,6 +345,98 @@ function dropdownSongs(item) {
   document.getElementById("songs").appendChild(node);
 }
 
+// Show similar songs to the selected song
+
+function showSimilarSongs() {
+  artist_id = document.getElementById("artistId").value;
+  let url = RELARTISTS.replace("{{ArtistId}}", artist_id);
+  tableHeader();
+
+  callApi("GET", url, null, handleSimSongs);
+}
+
+function handleSimSongs() {
+  if (this.status == 200) {
+    var data = JSON.parse(this.responseText);
+    console.log(data);
+
+    for (let i = 0; i < 3; i++) {
+      //console.log(data.artists[i].name);
+      //console.log(data.artists[i].id);
+      topSong(data.artists[i]);
+    }
+
+    handle = "showing similar songs";
+    console.log(handle);
+  } else if (this.status == 401) {
+    refreshAccessToken();
+  } else {
+    console.log(this.responseText);
+    alert(this.responseText);
+  }
+}
+
+// Get song name
+
+function getArtistId() {
+  let song_id = document.getElementById("songs").value;
+
+  if (song_id.length > 0) {
+    let url = TRACKBYID.replace("{{SongId}}", song_id);
+    callApi("GET", url, null, handleGetArtistId);
+  }
+}
+
+function handleGetArtistId() {
+  if (this.status == 200) {
+    var data = JSON.parse(this.responseText);
+    console.log(data);
+    current_artist_id = data.artists[0].id;
+
+    handle = "got artist ID from song ID";
+    console.log(data.artists[0].name);
+    console.log(current_artist_id);
+    console.log(handle);
+
+    showSimilarSongs();
+  } else if (this.status == 401) {
+    refreshAccessToken();
+  } else {
+    console.log(this.responseText);
+    alert(this.responseText);
+  }
+}
+
+// Get top song from artist
+
+function topSong(artist) {
+  let artist_id = artist.id;
+
+  if (artist_id.length > 0) {
+    let url = TOPTRACKS.replace("{{ArtistId}}", artist_id);
+    callApi("GET", url + "?market=US", null, handleTopSong);
+  }
+}
+
+function handleTopSong() {
+  if (this.status == 200) {
+    var data = JSON.parse(this.responseText);
+    console.log(data);
+
+    let artist = data.tracks[0].artists[0].name;
+    let song = data.tracks[0].name;
+    tableBody(artist, song);
+
+    handle = "got artist top song";
+    console.log(handle);
+  } else if (this.status == 401) {
+    refreshAccessToken();
+  } else {
+    console.log(this.responseText);
+    alert(this.responseText);
+  }
+}
+
 // Add song to selected playlist
 
 function addSongToPL() {
@@ -262,7 +458,7 @@ function addSongToPL() {
 }
 
 function handleAddSong() {
-  if (this.status == 200) {
+  if (this.status == 201) {
     handle = "song added";
     console.log(handle);
   } else if (this.status == 401) {
@@ -281,9 +477,12 @@ function delSongFromPL() {
 
   if (playlist_id.length > 0) {
     let url = TRACKS.replace("{{PlaylistId}}", playlist_id);
-    let song_id = document.getElementById("songs").value;
-    let body = '{"tracks": [{"uri": "spotify:track:' + song_id + '"}]}';
-    callApi("DELETE", url, body, handleDelSong);
+    let song_id = document.getElementById("songId").value;
+
+    if (song_id.length > 0) {
+      let body = '{"tracks": [{"uri": "spotify:track:' + song_id + '"}]}';
+      callApi("DELETE", url, body, handleDelSong);
+    }
   }
 }
 
@@ -302,7 +501,7 @@ function handleDelSong() {
 // Get Song Attributes
 
 function getSongAttr() {
-  let song_id = document.getElementById("songs").value;
+  let song_id = document.getElementById("songId").value;
 
   if (song_id.length > 0) {
     let url = AUDIOFEATURES.replace("{{SongId}}", song_id);
@@ -335,6 +534,12 @@ function dropdownAttributes(item, index) {
   const [key, value] = item;
   node.innerHTML = `${key}: ${value}`;
   document.getElementById("songAttrs").appendChild(node);
+
+  let attr = document.createElement("input");
+  attr.type = "hidden";
+  attr.id = `${key}`;
+  attr.value = `${value}`;
+  document.getElementById("songAttrs").append(attr);
 }
 
 // Create new playlist
@@ -383,7 +588,7 @@ function followArtist() {
 }
 
 function handleFllwArtist() {
-  if (this.status == 200) {
+  if (this.status == 204) {
     handle = "artist followed";
     console.log(handle);
   } else if (this.status == 401) {
@@ -430,18 +635,15 @@ function getDeviceId() {
   return document.getElementById("devices").value;
 }
 
-function play(song_id) {
+function play() {
   // play song
-  // let songs = document.getElementById("songs");
-  // let song_id = document.getElementById("songs").value;
-
-  //console.log(songs);
-  console.log(song_id);
+  let album_id = document.getElementById("albumId").value;
+  let position = document.getElementById("trackNum").value;
 
   let body = {};
-  body.context_uri = "spotify:playlist:" + playlist_id;
+  body.context_uri = "spotify:album:" + album_id;
   body.offset = {};
-  body.offset.position = 0;
+  body.offset.position = position - 1;
   body.position_ms = 0;
 
   console.log(body);
@@ -456,10 +658,8 @@ function play(song_id) {
 
 function playFromPL() {
   // play song from playlist
-  let playlist_id = document.getElementById("playlists").value;
-
-  let songs = document.getElementById("songs");
-  let song_id = document.getElementById("songs").value;
+  let album_id = document.getElementById("albumId").value;
+  let song_id = document.getElementById("songId").value;
   let song_index = 0;
 
   for (var i = 0; i < songs.length; i++) {
@@ -470,7 +670,7 @@ function playFromPL() {
   }
 
   let body = {};
-  body.context_uri = "spotify:playlist:" + playlist_id;
+  body.context_uri = "spotify:album:" + album_id;
   body.offset = {};
   body.offset.position = song_index;
   body.position_ms = 0;
