@@ -84,22 +84,23 @@ tr:nth-child(even) {
 </style>
 </head>
 
-<body class="bkg_im" onload="onPageLoad(<?php print $results[0]['artists']; ?>)">
+<!-- <body class="bkg_im" onload="onPageLoad(<?php print $results[0]['artists']; ?>)"> -->
+<body class="bkg_im" onload="onPageLoad()">
 
     <header>
-      <div class="container_h">
-      <h3 class="logo">MUSE Song Page</h3>
+        <div class="container_h">
+        <h3 class="logo">MUSE Song Page</h3>
 
-        <nav>
-          <ul>
-            <li><a href="http://local.muse/">Home</a></li>
-            <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
-            <li><a href="http://local.muse/project.html">About</a></li>
-            <li><a href="http://local.muse/login.php">Admin</a></li>
-            <li><a href="http://local.muse/oauth.php">Login</a></li>
-          </ul>
-        </nav>
-      </div>
+            <nav>
+                <ul>
+                    <li><a href="http://local.muse/">Home</a></li>
+                    <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
+                    <li><a href="http://local.muse/project.html">About</a></li>
+                    <li><a href="http://local.muse/login.php">Admin</a></li>
+                    <li><a href="http://local.muse/oauth.php">Login</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <h1><?php echo $results[0]['name'] . ' | ' . $results[0]['artists'] ?></h1>

@@ -45,14 +45,15 @@ STATIC HTML:
 
 TO DO:
 
-1. Improve the layout of home page $
-2. Get Spotify API fully functional $
-3. Improve the layout of the Spotify interactive page
-4. Improve the layout of the Spotify login page
-5. Improve the layout of the demo page
-6. Improve the layout of the admin login page
-7. Incorporate better functionality for the add_admin/mods files
-8. Improve the layout of static html pages?
-9. Clean up the database and unused files
+1. Get Spotify API fully functional $
+1. Improve the layout of home page
+1. Improve the layout of the Spotify interactive page
+1. Improve the layout of the Spotify login page
+1. Improve the layout of the demo page
+1. Improve the layout of the admin login page
+1. Incorporate better functionality for the add_admin/mods files
+1. Improve the layout of static html pages?
+1. Clean up the database and unused files
+1. Rename files to reflect their functionality
 
 CMD + SHIFT + R to refresh browser cache

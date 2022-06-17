@@ -1,33 +1,30 @@
-h1{
+h1 {
   background-color: transparent;
-	border-bottom:solid;
-	border-width: 5px;
+  border-bottom: solid;
+  border-width: 5px;
   font-family: "Benton Sans", Helvetica, sans-serif;
   text-align: center;
-
 }
-h3{
-    color: black;
-    background-color: transparent;
-    font-family: "Benton Sans", Helvetica, sans-serif;
+h3 {
+  color: black;
+  background-color: transparent;
+  font-family: "Benton Sans", Helvetica, sans-serif;
+  font-size: 24px;
 }
-h4{
-    color: black;
-    background-color: transparent;
-    font-family: "Benton Sans", Helvetica, sans-serif;
+h4 {
+  color: black;
+  background-color: transparent;
+  font-family: "Benton Sans", Helvetica, sans-serif;
 }
-
 
 .bkg_im {
-
-    background-color: white
-    color: white;
-    padding: 5px;
+  background-color: white;
+  color: white;
+  padding: 5px;
 }
 
 .login_button {
-	position: relative;
-
+  position: relative;
 }
 
 .content-container-full {
@@ -35,14 +32,14 @@ h4{
 }
 
 .footer {
-    left: 0;
-    bottom:0;
-    padding: 10px;
-    width: 100%;
-    background-color: black ;
-    color: white;
-    text-align: center;
-  }
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
 
 html {
   margin: 0px;
@@ -55,27 +52,26 @@ ul {
   padding: 0;
 }
 
-
-.vertical-center{
-  margin:0;
+.vertical-center {
+  margin: 0;
   position: absolute;
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,600");
 body {
-	margin: 0;
-	background: #222;
-	font-family: 'Work Sans', sans-serif;
-	font-weight: 800;
-  height:100vh;
+  margin: 0;
+  background: #222;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 800;
+  height: 100vh;
 }
 
 .container_h {
-	width: 80%;
-	margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 header {
@@ -83,7 +79,7 @@ header {
 }
 
 header::after {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
@@ -95,6 +91,7 @@ header::after {
 }
 
 nav {
+  align-items: center;
   float: right;
 }
 
@@ -108,7 +105,6 @@ nav li {
   display: inline-block;
   margin-left: 70px;
   padding-top: 23px;
-
   position: relative;
 }
 
@@ -124,7 +120,7 @@ nav a:hover {
 }
 
 nav a::before {
-  content: '';
+  content: "";
   display: block;
   height: 5px;
   background-color: #444;
