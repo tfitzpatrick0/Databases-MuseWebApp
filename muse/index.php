@@ -50,15 +50,15 @@ try {
     <br />
 
     <div>
-        <div class="content-container-full">
+        <div class="song-search-container">
             <div>
                 <h1>Song Search:</h1>
             </div>
             <div class="col">
-                <input id="searchText" class="form-control me-2" type="text" name="searched_song_name" placeholder="Enter the song name..." aria-label="Search">
+                <input class="input-text-field" type="text" name="searched_song_name" placeholder="Enter the song name..." aria-label="Search">
             </div>
             <div class="col">
-                <button id="searchButton" class="btn btn-outline-success" type="button" onclick="getTable()">Search</button>
+                <button class="button standard-button" class="btn btn-outline-success" type="button" onclick="getTable()">Search</button>
             </div>
 
             <br />

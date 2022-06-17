@@ -24,6 +24,39 @@ body {
   display: inline-block;
 }
 
+.input-text-field {
+  padding: 12px 400px 12px 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button {
+  border: 1px solid #55d6aa;
+  border-radius: 4px;
+  color: #55d6aa;
+  background-color: white;
+  transition: all ease-in-out 250ms;
+}
+
+.button:hover {
+  color: white;
+  background-color: #55d6aa;
+  cursor: pointer;
+  transition: all ease-in-out 250ms;
+}
+
+.standard-button {
+  padding: 12px 20px;
+  margin: 8px 0;
+}
+
+.big-button {
+  padding: 24px 40px;
+  margin: 8px 0;
+}
+
 /* Header styles (shared) */
 header {
   background-color: #55d6aa;
@@ -86,34 +119,11 @@ nav a:hover::before {
 }
 
 /* Home page - song search */
-.content-container-full {
+.song-search-container {
   text-align: left;
 }
 
-#searchText {
-  padding: 12px 400px 12px 12px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-#searchButton {
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: 1px solid #55d6aa;
-  border-radius: 4px;
-  color: #55d6aa;
-  background-color: white;
-  transition: all ease-in-out 250ms;
-}
-
-#searchButton:hover {
-  color: white;
-  background-color: #55d6aa;
-  transition: all ease-in-out 250ms;
-}
-
+/* Footer */
 .footer {
   padding: 20px;
   background-color: black;
