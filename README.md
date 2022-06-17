@@ -49,7 +49,7 @@ TO DO:
 2. Improve the layout of home page $
 3. Improve the layout of the Spotify interactive page
 4. Improve the layout of the Spotify login page $
-5. Improve the layout of the admin login page
+5. Improve the layout of the admin login page $ (NEED TO REWORK ADD_ADMIN/MODS, AND LAYOUT OF INFO MSG)
 6. Improve the layout of the demo page
 7. Incorporate better functionality for the add_admin/mods files
 8. Improve the layout of static html pages?

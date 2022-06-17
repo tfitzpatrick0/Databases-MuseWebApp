@@ -14,10 +14,10 @@ p {
 /* General styles (shared) */
 @import url("https://fonts.googleapis.com/css?family=Work+Sans:400,600");
 body {
+  height: 100%;
   margin: 10px;
   background-color: white;
   font-family: "Work Sans", sans-serif;
-  height: 100%;
 }
 
 .col {
@@ -25,7 +25,8 @@ body {
 }
 
 .input-text-field {
-  padding: 12px 400px 12px 12px;
+  width: 100%;
+  padding: 12px;
   margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -33,16 +34,16 @@ body {
 }
 
 .button {
-  border: 1px solid #55d6aa;
+  border: 1px solid green;
   border-radius: 4px;
-  color: #55d6aa;
+  color: green;
   background-color: white;
   transition: all ease-in-out 250ms;
 }
 
 .button:hover {
   color: white;
-  background-color: #55d6aa;
+  background-color: green;
   cursor: pointer;
   transition: all ease-in-out 250ms;
 }
@@ -55,9 +56,10 @@ body {
 .big-button {
   padding: 24px 40px;
   margin: 8px 0;
+  font-size: 130%;
 }
 
-/* Header styles (shared) */
+/* Header (shared) */
 header {
   background-color: #55d6aa;
 }
@@ -124,20 +126,75 @@ nav a:hover::before {
   background-color: black;
 }
 
-/* Home page - song search */
-.song-search-container {
-  text-align: left;
-}
-
-/* OAuth page - Spotify login */
-.spotify-login-container {
-  text-align: center;
-}
-
-/* Footer */
+/* Footer (shared) */
 .footer {
   padding: 20px;
   background-color: black;
   color: white;
   text-align: center;
+}
+
+/* Home - song search */
+.home-search-container {
+  text-align: left;
+}
+
+.home-search-form {
+  width: 40%;
+}
+
+/* Spotify Login - OAuth */
+.spotify-login-container {
+  text-align: center;
+}
+
+/* Admin Login */
+.admin-login-container {
+  height: 100%;
+  padding: 0 100px;
+}
+
+.admin-login-background {
+  height: 100%;
+  padding: 35px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  background-color: #ededed;
+}
+
+.al-col {
+  width: 50%;
+  flex: 0 0 auto;
+}
+
+.al-form-container {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: white;
+  font-family: "Works Sans", monospace;
+}
+
+.al-display-padding {
+  padding: 70px 70px;
+  flex: 1 1 auto;
+}
+
+.al-form-h {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.al-form-body {
+  margin-bottom: 6px;
+}
+
+.al-form-submit {
+  text-align: center;
+}
+
+.al-message-container {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: linear-gradient(to right, #6efac8, #5df4bb, #31e799, #05df85);
 }

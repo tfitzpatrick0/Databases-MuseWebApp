@@ -22,7 +22,7 @@ try {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Muse Home</title>
+    <title>MUSE Home</title>
     <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
@@ -51,15 +51,15 @@ try {
     <br />
 
     <div>
-        <div class="song-search-container">
+        <div class="home-search-container">
             <div>
                 <h1>Song Search:</h1>
             </div>
-            <div class="col">
-                <input id="searchText" class="input-text-field" type="text" name="searched_song_name" placeholder="Enter the song name..." aria-label="Search">
+            <div class="home-search-form col">
+                <input id="searchText" class="input-text-field" type="text" name="searched_song_name" placeholder="Enter the song name...">
             </div>
             <div class="col">
-                <button id="searchButton" class="button standard-button" class="btn btn-outline-success" type="button" onclick="getTable()">Search</button>
+                <button id="searchButton" class="button standard-button" type="button" onclick="getTable()">Search</button>
             </div>
 
             <br />
@@ -127,6 +127,7 @@ try {
                     }
                 });
             }
+
         </script>
     </div>
 
@@ -134,7 +135,7 @@ try {
     <br />
 
     <div class="footer">
-        <p>MUSE Inc.</p>
+        <p>MUSE Team 2021</p>
     </div>
 </body>
 </html>
