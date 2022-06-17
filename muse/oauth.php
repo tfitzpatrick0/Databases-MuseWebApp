@@ -52,7 +52,7 @@
     <br />
 
     <div class="footer">
-        <p>MUSE Inc.</p>
+        <p>MUSE Team 2021</p>
     </div>
 </body>
 </html>
