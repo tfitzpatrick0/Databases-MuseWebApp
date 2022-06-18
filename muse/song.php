@@ -7,7 +7,7 @@ $db = "muse";
 $conn = NULL;
 
 try {
-	$conn = mysqli_connect($servername, $username, $password, $db);
+	  $conn = mysqli_connect($servername, $username, $password, $db);
     //echo "Connected successfully";
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -16,20 +16,20 @@ try {
 $query = mysqli_query($conn, "SELECT * FROM track3 where id ='$id'");
 $results = array();
 while($row = mysqli_fetch_assoc($query)) {
-	array_push($results, $row);
+	  array_push($results, $row);
 }
 
 $pie_query = mysqli_query($conn, "SELECT likes, dislikes FROM youtube_like_dl where id ='$id'");
 $pie = array();
 while($pie_row = mysqli_fetch_assoc($pie_query)) {
-	array_push($pie, $pie_row);
+	  array_push($pie, $pie_row);
 }
 
 //$query = mysqli_query($conn, "SELECT likes, dislikes FROM youtube_l_dl where id ='$id'");
 $info_query = mysqli_query($conn, "SELECT y.album, y.track_number, y.explicit, y.release_date, x.likes, x.dislikes, y.album_id from youtube_like_dl as x, trackexp as y where x.id=y.id and x.id='$id'");
 $info = array();
 while($info_row = mysqli_fetch_assoc($info_query)) {
-	array_push($info, $info_row);
+	  array_push($info, $info_row);
 }
 
 ?>
@@ -41,15 +41,15 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Song Page</title>
-    <link rel="stylesheet" href="css/sty.css">
-	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="song.js"></script>
+    <title>MUSE Song</title>
+    <link rel="stylesheet" href="css/style.css">
+	  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="song.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
-<style>
+<!-- <style>
 * {
   box-sizing: border-box;
 }
@@ -81,27 +81,36 @@ tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 .button5 {border-radius: 50%;}
-</style>
+</style> -->
 </head>
 
-<!-- <body class="bkg_im" onload="onPageLoad(<?php print $results[0]['artists']; ?>)"> -->
-<body class="bkg_im" onload="onPageLoad()">
-
+<!-- <body onload="onPageLoad(<?php print $results[0]['artists']; ?>)"> -->
+<body onload="onPageLoad()">
     <header>
-        <div class="container_h">
-        <h3 class="logo">MUSE Song Page</h3>
-
+        <div class="container-h">
+            <h1 class="logo">MUSE Song</h1>
             <nav>
                 <ul>
                     <li><a href="http://local.muse/">Home</a></li>
                     <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
                     <li><a href="http://local.muse/project.html">About</a></li>
                     <li><a href="http://local.muse/login.php">Admin</a></li>
-                    <li><a href="http://local.muse/oauth.php">Login</a></li>
+                    <li><a href="http://local.muse/oauth.php">Spotify</a></li>
                 </ul>
             </nav>
         </div>
+        <div class="black-line"></div>
     </header>
+
+    <br />
+    <br />
+
+    <div class="song-container">
+        <div class="song-h">
+            <button class="button big-button" type="submit" onclick="window.location.href = 'http://local.muse/index.php'">Return to Search</button>
+            <h1><?php echo $results[0]['name'] . ' | ' . $results[0]['artists'] ?></h1>
+        </div>
+    </div>
 
     <h1><?php echo $results[0]['name'] . ' | ' . $results[0]['artists'] ?></h1>
 

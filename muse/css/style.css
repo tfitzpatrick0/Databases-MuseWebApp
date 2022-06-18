@@ -17,11 +17,7 @@ body {
   height: 100%;
   margin: 10px;
   background-color: white;
-  font-family: "Work Sans", sans-serif;
-}
-
-.col {
-  display: inline-block;
+  font-family: "Work Sans", monospace;
 }
 
 .input-text-field {
@@ -34,16 +30,17 @@ body {
 }
 
 .button {
-  border: 1px solid green;
+  border: 1px solid #005c29;
   border-radius: 4px;
-  color: green;
+  color: #005c29;
   background-color: white;
   transition: all ease-in-out 250ms;
+  font-family: "Work Sans", monospace;
 }
 
 .button:hover {
   color: white;
-  background-color: green;
+  background-color: #005c29;
   cursor: pointer;
   transition: all ease-in-out 250ms;
 }
@@ -62,6 +59,7 @@ body {
 /* Header (shared) */
 header {
   background-color: #55d6aa;
+  font-family: "Work Sans", sans-serif;
 }
 
 .container-h {
@@ -134,16 +132,26 @@ nav a:hover::before {
   text-align: center;
 }
 
-/* Home - song search */
-.home-search-container {
+/* Search Database (index.php and demo.php) */
+.search-container {
   text-align: left;
 }
 
-.home-search-form {
-  width: 40%;
+.search-form-container {
+  display: flex;
 }
 
-/* Spotify Login - OAuth */
+.search-input-text {
+  margin-right: 10px;
+}
+
+/* Update Song by ID */
+
+/* Delete Song by ID */
+
+/* Insert a Song */
+
+/* Spotify OAuth */
 .spotify-login-container {
   text-align: center;
 }
@@ -151,14 +159,9 @@ nav a:hover::before {
 /* Admin Login */
 .admin-login-container {
   height: 100%;
-  padding: 0 100px;
-}
-
-.admin-login-background {
-  height: 100%;
+  margin: 0 100px;
   padding: 35px 50px;
   display: flex;
-  flex-wrap: wrap;
   border-radius: 10px;
   background-color: #ededed;
 }
@@ -172,7 +175,6 @@ nav a:hover::before {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   background-color: white;
-  font-family: "Works Sans", monospace;
 }
 
 .al-display-padding {
@@ -197,4 +199,15 @@ nav a:hover::before {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   background: linear-gradient(to right, #6efac8, #5df4bb, #31e799, #05df85);
+}
+
+/* Song Display */
+.song-container {
+  height: 100%;
+  margin: 0 100px;
+}
+
+.song-h {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
 }
