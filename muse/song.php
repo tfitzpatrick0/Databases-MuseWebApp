@@ -107,17 +107,20 @@ tr:nth-child(even) {
 
     <div class="song-container">
         <div class="song-h">
-            <button class="button big-button" type="submit" onclick="window.location.href = 'http://local.muse/index.php'">Return to Search</button>
-            <h1><?php echo $results[0]['name'] . ' | ' . $results[0]['artists'] ?></h1>
+            <h1><?php echo '\'' . $results[0]['name'] . '\' by \'' . substr($results[0]['artists'], 2, strlen($results[0]['artists'])-4) . '\'' ?></h1>
+            <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/index.php'">Return to Search</button>
+        </div>
+        <div class="song-body-container">
+            <div class="sb-box">A</div>
+            <div class="sb-box">B</div>
+            <div class="sb-box">C</div>
+            <div class="sb-box">D</div>
         </div>
     </div>
-
-    <h1><?php echo $results[0]['name'] . ' | ' . $results[0]['artists'] ?></h1>
 
     <div class="container-fluid">
 
     <div>
-        <button class="btn btn-outline-success" type="submit" onclick="window.location.href = 'http://local.muse/index.php';">Return to Search</button>
     <div class="mb-3">
         <label for="devices" class="form-label">Devices</label>
         <select id="devices" class="form-control">
