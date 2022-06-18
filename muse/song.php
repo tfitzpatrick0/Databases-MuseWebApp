@@ -107,7 +107,7 @@ tr:nth-child(even) {
 
     <div class="song-container">
         <div class="song-h">
-            <h1><?php echo '\'' . $results[0]['name'] . '\' by \'' . substr($results[0]['artists'], 2, strlen($results[0]['artists'])-4) . '\'' ?></h1>
+            <h1><?php echo 'Song: \'' . $results[0]['name'] . '\' by \'' . substr($results[0]['artists'], 2, strlen($results[0]['artists'])-4) . '\'' ?></h1>
             <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/index.php'">Return to Search</button>
         </div>
         <div class="song-body-container">
@@ -129,12 +129,12 @@ tr:nth-child(even) {
 
             <div class="sb-box">
                 <div class="sb-dropdown-h">
-                    <label for="devices" class="form-label">PLAYLISTS</label>
+                    <label for="playlists" class="form-label">PLAYLISTS</label>
                     <button class="button standard-button" type="button" onclick="refreshPlaylists()">Refresh Playlists</button>
                 </div>
                 <select id="playlists" class="dropdown-field"></select>
                 <div class="sb-dropdown-h">
-                    <label for="devices" class="form-label">SONGS</label>
+                    <label for="songs" class="form-label">SONGS</label>
                     <button class="button standard-button" type="button" onclick="displaySongs()">Display Songs</button>
                 </div>
                 <select id="songs" class="dropdown-field"></select>
@@ -148,8 +148,41 @@ tr:nth-child(even) {
                 </div>
             </div>
 
-            <div class="sb-box">C</div>
-            <div class="sb-box">D</div>
+            <div class="sb-box">
+                <div class="sb-dropdown-h">
+                    <label for="songAttrs" class="form-label">SONG ATTRIBUTES</label>
+                    <button class="button standard-button" type="button" onclick="getSongAttr()">Display Song Attributes</button>
+                </div>
+                <select id="songAttrs" class="dropdown-field"></select>
+
+                <div class="sb-options-h">
+                    <h2>EXPLORE</h2>
+                </div>
+                <div class="sb-options-buttons">
+                    <button class="button standard-button-2" type="button" onclick="createChart()">Bar Chart</button>
+                    <button class="button standard-button-2" type="button" onclick="createPie()">Pie Graph</button>
+                </div>
+            </div>
+
+            <div class="sb-box">
+                <div class="sb-dropdown-h">
+                    <label for="songAttrs" class="form-label">SONG INFORMATION</label>
+                </div>
+
+                <div class="sb-options-h-2">
+                    <h3>Album: <?php echo $info[0]['album']; ?></h3>
+                    <h3>Track Number: <?php echo $info[0]['track_number']; ?></h3>
+                    <h3>Explicit: <?php echo $info[0]['explicit']; ?></h3>
+                    <h3>Release Date: <?php echo $info[0]['release_date']; ?></h3>
+                    <h3>Likes: <?php echo $info[0]['likes']; ?></h3>
+                    <h3>Dislikes: <?php echo $info[0]['dislikes']; ?></h3>
+                </div>
+                <div class="sb-options-buttons">
+                    <button class="button standard-button-2" type="button" onclick="followArtist()">Follow Artist</button>
+                    <button class="button standard-button-2" type="button" onclick="window.location.href = 'https://open.spotify.com/track/<?php print $id; ?>'">Spotify Link</button>
+                    <button class="button standard-button-2" type="button" onclick="window.location.href = 'https://www.youtube.com/results?search_query=<?php print $results[0]['artists']; ?>'">Search Link</button>
+                </div>
+            </div>
         </div>
     </div>
 

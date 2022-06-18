@@ -250,7 +250,7 @@ nav a:hover::before {
 }
 
 .sb-dropdown-h > label {
-  margin: auto 0 8px 0;
+  margin: 8px 0 auto 0;
   font-size: 150%;
 }
 
@@ -259,8 +259,15 @@ nav a:hover::before {
 .sb-options-h {
   padding-top: 100px;
   display: flex;
-  align-content: center;
-  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.sb-options-h-2 {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .sb-options-buttons {
