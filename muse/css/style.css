@@ -243,25 +243,27 @@ nav a:hover::before {
   border-radius: 10px;
 }
 
-/* Song Display - Refresh Devices */
-.sb-devices-h {
+/* Song Dropdown */
+.sb-dropdown-h {
   display: flex;
   justify-content: space-between;
 }
 
-.sb-devices-h > label {
+.sb-dropdown-h > label {
   margin: auto 0 8px 0;
   font-size: 150%;
 }
 
-.sb-devices-play-h {
+/* Song Options */
+
+.sb-options-h {
   padding-top: 100px;
   display: flex;
   align-content: center;
   justify-content: center;
 }
 
-.sb-devices-play-buttons {
+.sb-options-buttons {
   display: flex;
   align-content: center;
   justify-content: center;

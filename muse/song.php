@@ -112,20 +112,42 @@ tr:nth-child(even) {
         </div>
         <div class="song-body-container">
             <div class="sb-box">
-                <div class="sb-devices-h">
+                <div class="sb-dropdown-h">
                     <label for="devices" class="form-label">DEVICES</label>
                     <button class="button standard-button" type="button" onclick="refreshDevices()">Refresh Devices</button>
                 </div>
                 <select id="devices" class="dropdown-field"></select>
-                <div class="sb-devices-play-h">
+
+                <div class="sb-options-h">
                     <h2>PLAY SONG</h2>
                 </div>
-                <div class="sb-devices-play-buttons">
+                <div class="sb-options-buttons">
                     <button class="button standard-button-2" type="button" onclick="play()">Play</button>
                     <button class="button standard-button-2" type="button" onclick="pause()">Pause</button>
                 </div>
             </div>
-            <div class="sb-box">B</div>
+
+            <div class="sb-box">
+                <div class="sb-dropdown-h">
+                    <label for="devices" class="form-label">PLAYLISTS</label>
+                    <button class="button standard-button" type="button" onclick="refreshPlaylists()">Refresh Playlists</button>
+                </div>
+                <select id="playlists" class="dropdown-field"></select>
+                <div class="sb-dropdown-h">
+                    <label for="devices" class="form-label">SONGS</label>
+                    <button class="button standard-button" type="button" onclick="displaySongs()">Display Songs</button>
+                </div>
+                <select id="songs" class="dropdown-field"></select>
+
+                <div class="sb-options-h">
+                    <h2><?php echo '\'' . $results[0]['name'] . '\' by \'' . substr($results[0]['artists'], 2, strlen($results[0]['artists'])-4) . '\'' ?></h2>
+                </div>
+                <div class="sb-options-buttons">
+                    <button class="button standard-button-2" type="button" onclick="addSongToPL()">Add to Playlist</button>
+                    <button class="button standard-button-2" type="button" onclick="delSongFromPL()">Delete from Playlist</button>
+                </div>
+            </div>
+
             <div class="sb-box">C</div>
             <div class="sb-box">D</div>
         </div>
