@@ -111,18 +111,38 @@ tr:nth-child(even) {
             <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/index.php'">Return to Search</button>
         </div>
         <div class="song-body-container">
-            <div class="sb-box">A</div>
+            <div class="sb-box">
+                <div class="sb-devices-h">
+                    <label for="devices" class="form-label">DEVICES</label>
+                    <button class="button standard-button" type="button" onclick="refreshDevices()">Refresh Devices</button>
+                </div>
+                <select id="devices" class="dropdown-field"></select>
+                <div class="sb-devices-play-h">
+                    <h2>PLAY SONG</h2>
+                </div>
+                <div class="sb-devices-play-buttons">
+                    <button class="button standard-button-2" type="button" onclick="play()">Play</button>
+                    <button class="button standard-button-2" type="button" onclick="pause()">Pause</button>
+                </div>
+            </div>
             <div class="sb-box">B</div>
             <div class="sb-box">C</div>
             <div class="sb-box">D</div>
         </div>
     </div>
 
+    <br />
+    <br />
+
+    <div class="footer">
+        <p>MUSE Team 2021</p>
+    </div>
+
     <div class="container-fluid">
 
     <div>
     <div class="mb-3">
-        <label for="devices" class="form-label">Devices</label>
+        <label for="devices" class="form-label">DEVICES</label>
         <select id="devices" class="form-control">
         </select>
         <input class="btn btn-primary btn-sm mt-3" type="button" onclick="refreshDevices()" value="Refresh Devices">

@@ -20,7 +20,8 @@ body {
   font-family: "Work Sans", monospace;
 }
 
-.input-text-field {
+.input-text-field,
+.dropdown-field {
   width: 100%;
   padding: 12px;
   margin: 8px 0;
@@ -50,9 +51,20 @@ body {
   margin: 8px 0;
 }
 
+.standard-button-2 {
+  padding: 12px 20px;
+  margin: 8px;
+}
+
 .big-button {
   padding: 24px 40px;
   margin: 8px 0;
+  font-size: 130%;
+}
+
+.big-button-2 {
+  padding: 24px 40px;
+  margin: 8px;
   font-size: 130%;
 }
 
@@ -160,7 +172,7 @@ nav a:hover::before {
 .admin-login-container {
   height: 100%;
   margin: 0 100px;
-  padding: 35px 50px;
+  padding: 30px 45px;
   display: flex;
   border-radius: 10px;
   background-color: #ededed;
@@ -177,9 +189,8 @@ nav a:hover::before {
   background-color: white;
 }
 
-.al-display-padding {
-  padding: 70px 70px;
-  flex: 1 1 auto;
+.al-form-padding {
+  padding: 70px;
 }
 
 .al-form-h {
@@ -220,7 +231,7 @@ nav a:hover::before {
   width: 100%;
   height: 800px;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: calc(50% - 5px) calc(50% - 5px);
   grid-template-rows: auto auto;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
@@ -228,9 +239,30 @@ nav a:hover::before {
 
 .sb-box {
   background-color: #ededed;
-  padding: 20px;
+  padding: 30px 45px;
   border-radius: 10px;
+}
+
+/* Song Display - Refresh Devices */
+.sb-devices-h {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+}
+
+.sb-devices-h > label {
+  margin: auto 0 8px 0;
+  font-size: 150%;
+}
+
+.sb-devices-play-h {
+  padding-top: 100px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.sb-devices-play-buttons {
+  display: flex;
+  align-content: center;
   justify-content: center;
 }

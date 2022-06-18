@@ -87,7 +87,7 @@
 
 		<div class="admin-login-container">
 				<div class="al-form-container al-col">
-						<div class="al-display-padding">
+						<div class="al-form-padding">
 								<div class="al-form-h">
 										<img src="bkgs/M_logo.png" style="width: 185px;" alt="logo">
 										<h2>MUSE ADMIN LOGIN</h4>
