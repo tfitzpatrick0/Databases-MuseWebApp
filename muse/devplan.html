@@ -6,129 +6,140 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Muse DevPlan</title>
-  <link rel="stylesheet" href="css/sty.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <title>MUSE DevPlan</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bkg_im">
+<body>
   <header>
-    <div class="container_h">
-      <h3 class="logo">MUSE DevPlan</h3>
-
+    <div class="container-h">
+      <h1 class="logo">MUSE DevPlan</h1>
       <nav>
         <ul>
-          <li><a href="http://local.muse">Home</a></li>
+          <li><a href="http://local.muse/">Home</a></li>
           <li><a style="font-weight:bold" href="http://local.muse/devplan.html">DevPlan</a></li>
           <li><a href="http://local.muse/project.html">About</a></li>
           <li><a href="http://local.muse/login.php">Admin</a></li>
-          <li><a href="http://local.muse/oauth.php">Login</a></li>
-
+          <li><a href="http://local.muse/oauth.php">Spotify</a></li>
         </ul>
       </nav>
     </div>
+    <div class="black-line"></div>
   </header>
 
-  <h1></h1>
-  <div style="font-weight: normal;">
-    <h2> 1. Relational Schema </h2>
-    <div>Song(<u>spotify_id</u>, song_name, album, artist, track_number, explicit, danceability,<br>
-      energy, loudness, speechiness, acousticness, instrumentalness, valence,<br>
-      liveness, tempo, duration_ms, year, full_release_date)
-      <br>
-      <br>
-      User(<u>username</u>, password, preferences)
-      <br>
-      <br>
-      Personal_Lib(song_name, duration_ms, <u>playlist_name</u>, user_owner)
-      <br>
-      <br>
-      Certifications(<u>song</u>, artist, format, award, genre, previous_certifications)
-      <br>
-      <br>
-      Statistics(<u>artist</u>, likes, dislikes, numberOfSubscribers, channel_url)
-      <br>
-      <br>
-      The primary key of each table determines all of the attributes.
+  <br />
+
+  <div style="margin:0 50px">
+    <div>
+      <h2> 1. Relational Schema </h2>
+      <div>Song(<u>spotify_id</u>, song_name, album, artist, track_number, explicit, danceability,<br />
+        energy, loudness, speechiness, acousticness, instrumentalness, valence,<br />
+        liveness, tempo, duration_ms, year, full_release_date)
+        <br />
+        <br />
+        User(<u>username</u>, password, preferences)
+        <br />
+        <br />
+        Personal_Lib(song_name, duration_ms, <u>playlist_name</u>, user_owner)
+        <br />
+        <br />
+        Certifications(<u>song</u>, artist, format, award, genre, previous_certifications)
+        <br />
+        <br />
+        Statistics(<u>artist</u>, likes, dislikes, numberOfSubscribers, channel_url)
+        <br />
+        <br />
+        The primary key of each table determines all of the attributes.
+      </div>
+    </div>
+    <h3>1.1 Functional Dependencies</h3>
+    <ul>
+      <li><em>spotify_id</em> -> <em>song_name, album, artist, track_number, explicit, danceability, energy, loudness,
+          speechiness, acousticness, instrumentalness, valence, liveness, tempo, duration_ms, year,
+          full_release_dat</em>
+      </li>
+      <li><em>song_name, artist</em> -> spotify_id</li>
+      <li><em>username</em> -> <em>password, preferences</em></li>
+      <li><em>user_owner, playlist_name</em> -> <em>song_name, duration_ms</em></li>
+      <li><em>song, artist</em> -> <em>format, award, genre, previous_certifications</em></li>
+      <li><em>artist, channel_url</em> -> <em>likes, dislikes, numberOfSubscribers</em></li>
+    </ul>
+    <p>Candidate keys: spotify_id, username, [user_owner, playlist_name], [song, artist], [artist, channel_url]</p>
+    <h2> 2. Technologies </h2>
+    <ul>
+      <li><b>PHP</b></li>
+      <li><b>MySQL</b></li>
+      <li><b>JavaScript</b></li>
+      <li><b>HTML / CSS</b></li>
+      <li><b>OAuth / Spotify API</b></li>
+    </ul>
+
+    <h2> 3. Data Source </h2>
+    <div>We will obtain our datasets from Kaggle; specifically we will use the datasets called
+      <em><a href="https://www.kaggle.com/rodolfofigueroa/spotify-12m-songs">Spotify 1.2M+</a></em> and <em><a
+          href="https://www.kaggle.com/yashtiwari1906/youtube-music-data">Youtube Music Data</a></em>. We will also
+      obtain
+      Awards/Certifications dataset from the <em><a href="https://www.riaa.com/gold-platinum/">RIAA Gold & Platinum
+          website</a></em>. From the first dataset, we will make use of the attributes name, album, and artists, and to
+      generate the proxy user statistics for the song (one of our advanced functions) we will use the second dataset's #
+      dislikes, # likes, and # numberOfSubscribers. We will also obtain pairs of username and password from a dataset
+      called <em><a href="https://www.kaggle.com/taranvee/bruteforce-database-password-dictionaries">Bruteforce Database
+          -
+          Password dictionaries</a></em> also from Kaggle.
+    </div>
+    <h2> 4. Labor Division </h2>
+    <div>
+      Dalton Dove: backend
+      <br />
+      Tim Fitzpatrick: backend
+      <br />
+      Nicholas Newton: frontend
+      <br />
+      Clare Jeon: mySQL and loading database
+    </div>
+
+    <h2> 5. Timeline </h2>
+    <div>
+      October 5: Setup html framework for site, load song information and youtube statistics data
+      <br />
+      October 11: Finish loading all data, begin working on backend interaction with mysql
+      <br />
+      Monday, October 19: Spend time over fall break completing SQL queries
+      <br />
+      Monday, October 26: Rough draft of home page and each song page. Some initial statistics and charts from chart.js
+      setup
+      <br />
+      <br />
+      <b>Friday, October 29: Initial Demo</b>
+      <br />
+      Show how to insert records to the database
+      <br />
+      Show at least one query that searches the database and list or print the returned records
+      <br />
+      Show how to update records
+      <br />
+      Show how to delete records
+      <br />
+      <br />
+      November 1: Finalize statistics and advanced function 1
+      <br />
+      November 8: Begin advanced function 2 advanced search
+      <br />
+      November 15: Finish advanced function 2 and add user profiles (username and password sign in)
+      <br />
+      November 22: Finish user library
+      <br />
+      <br />
+      <b>December 6: Final Demo </b>
     </div>
   </div>
-  <h3>1.1 Functional Dependencies</h3>
-  <li><em>spotify_id</em> -> <em>song_name, album, artist, track_number, explicit, danceability, energy, loudness,
-      speechiness, acousticness, instrumentalness, valence, liveness, tempo, duration_ms, year, full_release_dat</em>
-  </li>
-  <li><em>song_name, artist</em> -> spotify_id</li>
-  <li><em>username</em> -> <em>password, preferences</em></li>
-  <li><em>user_owner, playlist_name</em> -> <em>song_name, duration_ms</em></li>
-  <li><em>song, artist</em> -> <em>format, award, genre, previous_certifications</em></li>
-  <li><em>artist, channel_url</em> -> <em>likes, dislikes, numberOfSubscribers</em></li>
-  <p>Candidate keys: spotify_id, username, [user_owner, playlist_name], [song, artist], [artist, channel_url]</p>
-  <h2> 2. Technologies </h2>
-  <ul>
-    <li><b>PHP</b></li>
-    <li><b>MySQL</b></li>
-    <li><b>JavaScript</b></li>
-    <li><b>HTML / CSS</b></li>
-    <li><b>OAuth / Spotify API</b></li>
-  </ul>
 
-  <h2> 3. Data Source </h2>
-  <div style="font-weight:normal;">We will obtain our datasets from Kaggle; specifically we will use the datasets called
-    <em><a href="https://www.kaggle.com/rodolfofigueroa/spotify-12m-songs">Spotify 1.2M+</a></em> and <em><a
-        href="https://www.kaggle.com/yashtiwari1906/youtube-music-data">Youtube Music Data</a></em>. We will also obtain
-    Awards/Certifications dataset from the <em><a href="https://www.riaa.com/gold-platinum/">RIAA Gold & Platinum
-        website</a></em>. From the first dataset, we will make use of the attributes name, album, and artists, and to
-    generate the proxy user statistics for the song (one of our advanced functions) we will use the second dataset's #
-    dislikes, # likes, and # numberOfSubscribers. We will also obtain pairs of username and password from a dataset
-    called <em><a href="https://www.kaggle.com/taranvee/bruteforce-database-password-dictionaries">Bruteforce Database -
-        Password dictionaries</a></em> also from Kaggle.</div>
-  <h2> 4. Labor Division </h2>
-  <div style="font-weight: normal;">
-    Dalton Dove: backend
-    <br>
-    Tim Fitzpatrick: backend
-    <br>
-    Nicholas Newton: frontend
-    <br>
-    Clare Jeon: mySQL and loading database
+  <br />
+  <br />
+
+  <div class="footer">
+    <p>MUSE Team 2021</p>
   </div>
-
-  <h2> 5. Timeline </h2>
-  <div style="font-weight: normal">
-    October 5: Setup html framework for site, load song information and youtube statistics data
-    <br>
-    October 11: Finish loading all data, begin working on backend interaction with mysql
-    <br>
-    Monday, October 19: Spend time over fall break completing SQL queries
-    <br>
-    Monday, October 26: Rough draft of home page and each song page. Some initial statistics and charts from chart.js
-    setup
-    <br>
-    <br>
-    <b>Friday, October 29: Initial Demo</b>
-    <br>
-    Show how to insert records to the database
-    <br>
-    Show at least one query that searches the database and list or print the returned records
-    <br>
-    Show how to update records
-    <br>
-    Show how to delete records
-    <br>
-    <br>
-    November 1: Finalize statistics and advanced function 1
-    <br>
-    November 8: Begin advanced function 2 advanced search
-    <br>
-    November 15: Finish advanced function 2 and add user profiles (username and password sign in)
-    <br>
-    November 22: Finish user library
-    <br>
-    <br>
-    <b>December 6: Final Demo </b>
-  </div>
-
-  <div><br><a href="http://db.cse.nd.edu/cse30246/muse/project.html">Back to Project Description</a></div>
 </body>
 
 </html>

@@ -6,94 +6,98 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Muse About</title>
-  <link rel="stylesheet" href="css/sty.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <title>MUSE DevPlan</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bkg_im">
+<body>
   <header>
-    <div class="container_h">
-      <h3 class="logo">MUSE About</h3>
-
+    <div class="container-h">
+      <h1 class="logo">MUSE DevPlan</h1>
       <nav>
         <ul>
           <li><a href="http://local.muse/">Home</a></li>
           <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
           <li><a style="font-weight:bold" href="http://local.muse/project.html">About</a></li>
           <li><a href="http://local.muse/login.php">Admin</a></li>
-          <li><a href="http://local.muse/oauth.php">Login</a></li>
-
+          <li><a href="http://local.muse/oauth.php">Spotify</a></li>
         </ul>
       </nav>
     </div>
+    <div class="black-line"></div>
   </header>
 
-  <h1></h1>
+  <br />
 
+  <div style="margin:0 50px">
+    <h2> 1. Description </h2>
+    We will make use of the database for music/songs with attributes including artists, ISRC number, album title, and
+    other properties. The purpose of this project is to let users know a plethora of songs that they would like based on
+    their searches/saved genre/title/album/artist. Users will own personal accounts through which they are given the six
+    functionalities to be mentioned below.
 
+    <h2> 2. Usefulness </h2>
 
-  <h2> 1. Description </h2>
-  We will make use of the database for music/songs with attributes including artists, ISRC number, album title, and
-  other properties. The purpose of this project is to let users know a plethora of songs that they would like based on
-  their searches/saved genre/title/album/artist. Users will own personal accounts through which they are given the six
-  functionalities to be mentioned below.
+    This website is a great resource for artists with the compiled statistics page. For example, users can view how a
+    certain song has grown in popularity and/or gone out of trend. This combines different metrics into a single page
+    that
+    is easy to review. The website will also be able to help users make their libraries unique and catered to their own
+    interests, as well as to receive recommendations for new songs that are based off of their current playlist and
+    recent
+    searches. Our project is different from other applications that simply make music search and listening convenient,
+    as
+    we incorporate in statistics for each song searched. Many other applications offer these type of statistical data,
+    but
+    we aim to make our application different by rendering it more "readable" and "interactable" for the user to visually
+    understand the data.
 
-  <h2> 2. Usefulness </h2>
+    <h2> 3. Realness </h2>
 
-  This website is a great resource for artists with the compiled statistics page. For example, users can view how a
-  certain song has grown in popularity and/or gone out of trend. This combines different metrics into a single page that
-  is easy to review. The website will also be able to help users make their libraries unique and catered to their own
-  interests, as well as to receive recommendations for new songs that are based off of their current playlist and recent
-  searches. Our project is different from other applications that simply make music search and listening convenient, as
-  we incorporate in statistics for each song searched. Many other applications offer these type of statistical data, but
-  we aim to make our application different by rendering it more "readable" and "interactable" for the user to visually
-  understand the data.
+    The “real data” of songs and their identifiable attributes will be accessed through <a
+      href="https://www.kaggle.com/rodolfofigueroa/spotify-12m-songs">Spotify 1.2M+</a>. The data for the user viewed
+    song’s Likes and Dislikes will be scraped from Youtube, number of streams from Spotify, and Gold and Platinum -
+    RIAA,
+    and song lyrics from Google.
+    <br><br>
+    Our database consists of songs and information about them, such as title, genre, language, duration, ISRC code
+    (unique
+    identifier), the album it belongs to, the credited artist, and the record label that owns the song. The database
+    will
+    also contain statistics about each song, including monthly streams, all time streams, awards, and popularity
+    (likes/dislikes).
 
-  <h2> 3. Realness </h2>
+    <h2> 4. Functionality </h2>
 
-  The “real data” of songs and their identifiable attributes will be accessed through <a
-    href="https://www.kaggle.com/rodolfofigueroa/spotify-12m-songs">Spotify 1.2M+</a>. The data for the user viewed
-  song’s Likes and Dislikes will be scraped from Youtube, number of streams from Spotify, and Gold and Platinum - RIAA,
-  and song lyrics from Google.
-  <br><br>
-  Our database consists of songs and information about them, such as title, genre, language, duration, ISRC code (unique
-  identifier), the album it belongs to, the credited artist, and the record label that owns the song. The database will
-  also contain statistics about each song, including monthly streams, all time streams, awards, and popularity
-  (likes/dislikes).
+    Basic Functionality:
+    <ul>
+      <li><b>Insert:</b> users can add a song to their personal library</li>
+      <li><b>Update:</b> users can update their account info and update their personal library information</li>
+      <li><b>Delete:</b> users can remove a song from a personal library/delete an entire personal library/delete their
+        account</li>
+      <li><b>Search:</b> users can filter their search by song/album title, artist name, or genre</li>
+    </ul>
 
-  <h2> 4. Functionality </h2>
+    Advanced Functionality:
 
-  Basic Functionality:
-  <ul>
-    <li><b>Insert:</b> users can add a song to their personal library</li>
-    <li><b>Update:</b> users can update their account info and update their personal library information</li>
-    <li><b>Delete:</b> users can remove a song from a personal library/delete an entire personal library/delete their
-      account</li>
-    <li><b>Search:</b> users can filter their search by song/album title, artist name, or genre</li>
-  </ul>
+    <ul>
+      <li>Smart playlist generator: users can search by the artist name, album name, length/duration of the song and a
+        year range of the recording</li>
+      <li>Displaying statistics: scrape statistical information from spotify/genius/youtube and display relevant
+        information to users, generate graphs and charts</li>
+      <li>Integrating OAuth and Spotify API into playlist search features</li>
+    </ul>
 
-  Advanced Functionality:
+    <h2> 5. ER Diagram Link </h2>
 
-  <ul>
-    <li>Smart playlist generator: users can search by the length/duration of the song, keywords from the song lyrics,
-      year range of the recording, and personal library attribution.</li>
-    <li>Displaying statistics: scrape statistical information from spotify/genius/youtube and display relevant
-      information to users, generate graphs and charts</li>
-    <li>Integrating OAuth and Spotify API into playlist search features</li>
-  </ul>
+    <a href="https://drive.google.com/file/d/1Pifq_lWh93iC5kEitKkv_1TdAWQ7DKsq/view?usp=sharing">ER Diagram</a>
+  </div>
 
-  <h2> 5. ER Diagram Link </h2>
+  <br />
+  <br />
 
-  <a href="https://drive.google.com/file/d/1Pifq_lWh93iC5kEitKkv_1TdAWQ7DKsq/view?usp=sharing">ER Diagram</a>
-
-  <h2> 6. Project Demo URL </h2>
-
-  <a href="http://db.cse.nd.edu/cse30246/muse">Muse</a>
-
-  <h2> 7. Development Plan </h2>
-  <a href="http://db.cse.nd.edu/cse30246/muse/devplan.html">Muse Devplan.html</a>
+  <div class="footer">
+    <p>MUSE Team 2021</p>
+  </div>
 </body>
 
 </html>
