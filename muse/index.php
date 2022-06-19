@@ -50,84 +50,81 @@ try {
 
     <br />
 
-    <div>
-        <div class="search-container">
-            <div>
-                <h1>Search Songs:</h1>
-            </div>
-            <div class="search-form-container">
-                <input id="searchText" class="input-text-field search-input-text" type="text" name="searched_song_name" placeholder="Enter the song name...">
-                <button id="searchButton" class="button standard-button" type="button" onclick="getTable()">Search</button>
-            </div>
-
-            <br />
-
-            <div class="row">
-                <table id="songTable" class="display"></table>
-            </div>
+    <div class="search-container">
+        <div>
+            <h1>Search Songs:</h1>
+        </div>
+        <div class="search-form-container">
+            <input id="searchText" class="input-text-field search-input-text" type="text" name="searched_song_name" placeholder="Enter the song name...">
+            <button id="searchButton" class="button standard-button" type="button" onclick="getTable()">Search</button>
         </div>
 
-        <script type="text/javascript">
+        <br />
 
-            $('#searchText').keyup(function(event) {
-                event.preventDefault();
-                if (event.keyCode === 13) {
-                    $("#searchButton").click();
+        <div class="row">
+            <table id="songTable"></table>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $('#searchText').keyup(function(event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                $("#searchButton").click();
+            }
+        });
+
+        function msToMinutesSeconds(data){
+            var minutes = Math.floor(data / 60000);
+            var seconds = ((data % 60000) / 1000).toFixed(0);
+            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        }
+
+        function artistTrim(data){
+            if(data.match(/'([^']+)'/) !== null){
+                return data.match(/'([^']+)'/)[1]
+            } else{
+                return ""
+            };
+        }
+
+        function getTable(){
+            console.log($('#searchText').val());
+            var searchText = $('#searchText').val();
+            var $response;
+            $.ajax({
+                type: 'POST',
+                data: {'searched_song_name': searchText},
+                url: 'http://local.muse/requestHandler.php',
+                success:function(response){
+                    var data = JSON.parse(response);
+                    console.log(data);
+                    if($.fn.DataTable.isDataTable("#songTable")) {
+                        $('#songTable').DataTable().clear().destroy();
+                    }
+                    $('#songTable').DataTable({
+                        data: data,
+                        language: {
+                            "search": "Filter: "
+                        },
+                        columns: [
+                            {"title": "Song Name", "data": "name",
+                                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                                    $(nTd).html("<a href='song.php?song_id=" + oData.id + "'>" + oData.name + "</a>");
+                                }
+                            },
+                            {"title": "Song ID", "data": "id"},
+                            {"title": "Artist", "data": "artists", "render": artistTrim},
+                            {"title": "Album", "data": "album"},
+                            {"title": "Duration", "data": "duration_ms", "render": msToMinutesSeconds},
+                            {"title": "Year", "data": "year"}
+                        ]
+                    });
                 }
             });
-
-            function msToMinutesSeconds(data){
-                var minutes = Math.floor(data / 60000);
-                var seconds = ((data % 60000) / 1000).toFixed(0);
-                return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-            }
-
-            function artistTrim(data){
-                if(data.match(/'([^']+)'/) !== null){
-                    return data.match(/'([^']+)'/)[1]
-                } else{
-                    return ""
-                };
-            }
-
-            function getTable(){
-                console.log($('#searchText').val());
-                var searchText = $('#searchText').val();
-                var $response;
-                $.ajax({
-                    type: 'POST',
-                    data: {'searched_song_name': searchText},
-                    url: 'http://local.muse/requestHandler.php',
-                    success:function(response){
-                        var data = JSON.parse(response);
-                        console.log(data);
-                        if($.fn.DataTable.isDataTable("#songTable")) {
-                            $('#songTable').DataTable().clear().destroy();
-                        }
-                        $('#songTable').DataTable({
-                            data: data,
-                            language: {
-                                "search": "Filter: "
-                            },
-                            columns: [
-                                {"title": "Song Name", "data": "name",
-                                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                                        $(nTd).html("<a href='song.php?song_id=" + oData.id + "'>" + oData.name + "</a>");
-                                    }
-                                },
-                                {"title": "Song ID", "data": "id"},
-                                {"title": "Artist", "data": "artists", "render": artistTrim},
-                                {"title": "Album", "data": "album"},
-                                {"title": "Duration", "data": "duration_ms", "render": msToMinutesSeconds},
-                                {"title": "Year", "data": "year"}
-                            ]
-                        });
-                    }
-                });
-            }
-
-        </script>
-    </div>
+        }
+    </script>
 
     <br />
     <br />

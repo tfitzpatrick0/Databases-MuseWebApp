@@ -1,89 +1,94 @@
-<!DOCTYPE html>
+<?php
+
+$servername = "localhost";
+$username = "root";
+$password = "stingrays";
+$db = "muse";
+$conn = NULL;
+
+try {
+		$conn = mysqli_connect($servername, $username, $password, $db);
+} catch (PDOException $e) { 
+		echo "Connection failed: " . $e->getMessage();
+}
+
+if (isset($_POST['searched_song_name'])) {
+		$song_name = $_POST['searched_song_name'];
+		if (trim($song_name, " ") == "") {
+				$empty_param = "The search parameter is empty - displaying the first 300 entries.";
+				$query = mysqli_query($conn, "SELECT * FROM track3 LIMIT 300");
+		} else {
+				$query = mysqli_query($conn, "SELECT * FROM track3 WHERE name = '$song_name'");
+		}
+		$results = array();
+		while($row = mysqli_fetch_assoc($query)) {
+				array_push($results, $row);
+		}
+}
+$conn->close();
+
+?>
+
 <!-- 
 Resources consulted:
 	https://stackoverflow.com/questions/17388800/display-results-from-mysql-query-in-php
 	https://stackoverflow.com/questions/55018495/php-mysql-display-table-with-action-row-clickable-to-open-specific-file
 -->
-<head>
-	<link rel="icon" href="bkgs/M_logo.png" type="image/icon type">
-	<title>Search Page - Muse</title>
-	<meta charset = "UTF-8">
-	<link rel="stylesheet" href="css/sty.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="icon" href="bkgs/M_logo.png" type="image/icon type">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MUSE Demo - Search</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>
 </head>
 <body>
-	<?php
+		<header>
+        <div class="container-h">
+            <h1 class="logo">MUSE Demo - Search</h1>
+            <nav>
+                <ul>
+                    <li><a href="http://local.muse/demo.php">Return to Demo</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="black-line"></div>
+    </header>
 
-		$servername = "localhost";
-		$username = "root";
-		$password = "stingrays";
-		$db = "muse";
-		$conn = NULL;
+		<br />
+		<br />
 
-		try {
-			$conn = mysqli_connect($servername, $username, $password, $db);
-		} catch (PDOException $e) { }
-	?>
-	<?php
+		<div class="search-container">
+				<p><?php echo (isset($empty_param)) ? $empty_param : '';?></p>
+				<table id="songTable"></table>
+		</div>
 
-		if (isset($_POST['searched_song_name'])) {
-			$song_name = $_POST['searched_song_name'];
-			if (trim($song_name, " ") == "") {
-				echo "Note that results are truncated because searched title is blank";
-				$query = mysqli_query($conn, "SELECT * FROM track3 LIMIT 300");
-			} else {
-				$query = mysqli_query($conn, "SELECT * FROM track3 WHERE name = '$song_name'");
-			}
-			$results = array();
-			while($row = mysqli_fetch_assoc($query)) {
-				array_push($results, $row);
-			}
+		<script type="text/javascript">
+				var searchResults = <?php echo json_encode($results); ?>;
+				$('#songTable').DataTable({
+						data: searchResults,
+						columns: [
+								{"title": "Song Name", "data": "name"},
+								{"title": "Song ID", "data": "id"},
+								{"title": "Album", "data": "album"},
+								{"title": "Duration", "data": "duration_ms"},
+								{"title": "Year", "data": "year"}
+						]
+				});
+		</script>
 
-			/*
-			echo "<table border='1'><tr><th>Song Title</th><th>Song ID</th><th>Album</th><th>Artists</th><th>Track Number</th><th>Release Date</th></tr>";
-			
-			while($row = mysqli_fetch_assoc($query)) {
-				echo "<tr>";
-				//TODO: need to pass over $row['id'] to song.php
-				echo "<td><a target='_blank' href='song.php?song_id=". $row['id'] ."'>" . $row['name'] . "</a></td>";
-				//echo "<td>" . $row['name'] . "</td>";
-				echo "<td>" . $row['id'] . "</td>";
-				echo "<td>" . $row['album'] . "</td>";
-				echo "<td>" . trim($row['artists'], "\"[\'\']\"") . "</td>";
-				echo "<td>" . $row['track_number'] . "</td>";
-				echo "<td>" . $row['release_date'] . "</td>";
-				echo "</tr>";
-			}
-			echo "</table>";
-			*/
+		<br />
+		<br />
 
-		}
-		$conn->close();
-
-	?>
-	<div>
-		<table id="songTable" class="display"></table>
-	</div>
-	<script type="text/javascript">
-		var searchTable = <?php echo json_encode($results); ?>;
-		// console.log(searchTable);
-		$('#songTable').DataTable({
-			data: searchTable,
-			columns: [
-				{"title": "Song Name", "data": "name"},
-				{"title": "Song ID", "data": "id"},
-				{"title": "Album", "data": "album"},
-				{"title": "Duration", "data": "duration_ms"},
-				{"title": "Year", "data": "year"}
-			]
-		});
-		
-	</script>
-	<br/>
-	<a href = 'http://local.muse/demo.php'>Back to demo.php</a>
+		<div class="footer">
+        <p>MUSE Team 2021</p>
+    </div>
 </body>
 </html>
