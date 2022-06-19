@@ -43,45 +43,9 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MUSE Song</title>
     <link rel="stylesheet" href="css/style.css">
-	  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 
     <script src="song.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-
-<!-- <style>
-* {
-  box-sizing: border-box;
-}
-
-.row {
-  display: flex;
-  margin-left:-5px;
-  margin-right:-5px;
-}
-
-.column {
-  flex: 50%;
-  padding: 5px;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
-}
-
-th, td {
-  text-align: left;
-  padding: 16px;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-.button5 {border-radius: 50%;}
-</style> -->
 </head>
 
 <!-- <body onload="onPageLoad(<?php print $results[0]['artists']; ?>)"> -->

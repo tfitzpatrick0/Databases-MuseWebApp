@@ -29,8 +29,8 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Muse Demo</title>
-    <link rel="stylesheet" href="css/sty.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> -->
 </head>
 
 <body>
@@ -50,54 +50,62 @@ try {
         <div class="black-line"></div>
     </header>
 
-    <h1></h1>
+    <br />
 
-    <div class="container-fluid">
-
-      <div>
-      <h3>Song Search:</h3>
-      <form class="d-flex" action = "http://local.muse/search.php" method ="post">
-      <input class="form-control me-2" type="text" name = "searched_song_name" placeholder="Enter the song name ..." aria-label="Search">
-          <button class="btn btn-outline-success" type="submit" onclick="window.location.href = 'http://local.muse/search.php';">Search</button>
-      </form>
-      <br>
-      #add search results here
-
-      <h4>Update by Id</h4>
-      <form action = "http://local.muse/update.php" method="post">
-          <input class="form-control me-2" type="text" name = "update_song_id" placeholder="Enter song ID..." aria-label="Search">
-          <input class="form-control me-2" type="text" name = "update_track_number" placeholder="Enter track number..." aria-label="Track num">
-
-          <button type="submit" class="btn btn-outline-success"
-          onclick="window.location.href = 'http://local.muse/update.php';">
-          Update
-          </button>
-      </form>
-
-      <br>
-
-      <h4>Delete by Id</h4>
-      <form action = "http://local.muse/delete.php" method = "post">
-      <input class="form-control" id="deleteId" name = "song_id_to_delete" type="text" placeholder="Song id" aria-label="default input delete">
-      <button type="submit" class="btn btn-outline-success" onclick="window.location.href = 'http://local.muse/delete.php';">Delete</button>
-      </form>
-      <br>
-      <br>
-
-      <h4>Insert New Song</h4>
-      <form action = "http://local.muse/insert.php" method = "POST">
-          <input class="form-control" name = "insert_song_name" type="text" placeholder="Song name" aria-label="default input name"/>
-          <input class="form-control" name = "insert_album_name" type="text" placeholder="Album" aria-label="default input album"/>
-          <input class="form-control" name = "insert_artist_name" type="text" placeholder="Artist" aria-label="default input artist"/>
-          <input class="form-control" name = "insert_release_date" type="text" placeholder="Release date" aria-label="default input release date"/>
-
-      <button class="btn btn-outline-success" type="submit" onclick = "window.location.href = 'http://local.muse/insert.php';">Insert</button>
-      </form>
+    <div class="search-container">
+        <div>
+            <h1>Search Songs:</h1>
+        </div>
+        <form action="http://local.muse/search.php" method="post">
+            <div class="search-form-container">
+                <input class="input-text-field search-input-text" type="text" name="searched_song_name" placeholder="Enter the song name...">
+                <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/search.php'">Search</button>
+            </div>
+        </form>
     </div>
 
-<br>
+    <div class="search-container">
+        <div>
+            <h1>Update by ID:</h1>
+        </div>
+        <form action="http://local.muse/update.php" method="post">
+            <div class="search-form-container">
+                <input class="input-text-field search-input-text" type="text" name="update_song_id" placeholder="Enter the song ID...">
+                <input class="input-text-field search-input-text" type="text" name="update_track_number" placeholder="Enter the new track number...">
+                <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/update.php'">Update</button>
+            </div>
+        </form>
+    </div>
 
-</div>
+    <div class="search-container">
+        <div>
+            <h1>Delete by ID:</h1>
+        </div>
+        <form action="http://local.muse/delete.php" method="post">
+            <div class="search-form-container">
+                <input class="input-text-field search-input-text" type="text" name="delete_song_id" placeholder="Enter the song ID...">
+                <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/delete.php'">Delete</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="search-container">
+        <div>
+            <h1>Insert New Song:</h1>
+        </div>
+        <form action="http://local.muse/insert.php" method="post">
+            <div class="search-form-container">
+                <input class="input-text-field search-input-text" type="text" name="insert_song_name" placeholder="Enter the song name...">
+                <input class="input-text-field search-input-text" type="text" name="insert_album_name" placeholder="Enter the album...">
+                <input class="input-text-field search-input-text" type="text" name="insert_artist_name" placeholder="Enter the artist...">
+                <input class="input-text-field search-input-text" type="text" name="insert_release_date" placeholder="Enter the release year...">
+                <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/insert.php'">Insert</button>
+            </div>
+        </form>
+    </div>
+
+    <br />
+    <br />
 
     <div class="footer">
         <p>MUSE Team 2021</p>

@@ -22,9 +22,9 @@ Resources consulted:
 		} catch (PDOException $e) { }
 	?>
 	<?php
-		echo $_POST['song_id_to_delete'];
-		if (isset($_POST['song_id_to_delete'])) {
-			$song_id = $_POST['song_id_to_delete'];
+		echo $_POST['delete_song_id'];
+		if (isset($_POST['delete_song_id'])) {
+			$song_id = $_POST['delete_song_id'];
 			if (trim($song_id, " ") == "") {
 				header("Location: http://local.muse/demo.php");
 				exit;

@@ -144,7 +144,7 @@ nav a:hover::before {
   text-align: center;
 }
 
-/* Search Database (index.php and demo.php) */
+/* Query Database (index.php and demo.php) */
 .search-container {
   text-align: left;
 }
@@ -156,12 +156,6 @@ nav a:hover::before {
 .search-input-text {
   margin-right: 10px;
 }
-
-/* Update Song by ID */
-
-/* Delete Song by ID */
-
-/* Insert a Song */
 
 /* Spotify OAuth */
 .spotify-login-container {
