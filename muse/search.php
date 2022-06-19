@@ -49,6 +49,7 @@ Resources consulted:
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>
 </head>
+
 <body>
 		<header>
         <div class="container-h">
@@ -66,7 +67,7 @@ Resources consulted:
 		<br />
 
 		<div class="search-container">
-				<p><?php echo (isset($empty_param)) ? $empty_param : '';?></p>
+				<p><?php echo (isset($empty_param)) ? $empty_param : ''; ?></p>
 				<table id="songTable"></table>
 		</div>
 

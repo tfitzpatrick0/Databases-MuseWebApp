@@ -47,7 +47,7 @@ TO DO:
 
 1. Get Spotify API fully functional $
 2. Improve the layout of home page $
-3. Improve the layout of the Spotify interactive page $ --> (NEED TO FIX FOOTER/CHARTS, ADD ELEMENTS WITH INFO FOR API CALLS, AND TRACK MORE DATA WITH PHP)
+3. Improve the layout of the Spotify interactive page $ --> (REWORK PHP/ELEMENTS WITH INFO FOR API CALLS)
 4. Improve the layout of the Spotify login page $
 5. Improve the layout of the admin login page $ --> (NEED TO REWORK ADD_ADMIN/MODS, AND LAYOUT OF INFO MSG)
 6. Improve the layout of the demo page $
