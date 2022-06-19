@@ -107,11 +107,11 @@ try {
         <div>
             <h1>Create New Admin Account:</h1>
         </div>
-        <form action="http://local.muse/add_admin.php" method="post">
+        <form action="http://local.muse/create_admin.php" method="post">
             <div class="search-form-container">
-                <input class="input-text-field search-input-text" type="text" name="add_admin_user" placeholder="Enter a username...">
-                <input class="input-text-field search-input-text" type="password" name="add_admin_password" placeholder="Enter a password...">
-                <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/insert.php'">Create</button>
+                <input class="input-text-field search-input-text" type="text" name="create_admin_user" placeholder="Enter a username...">
+                <input class="input-text-field search-input-text" type="password" name="create_admin_password" placeholder="Enter a password...">
+                <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/create_admin.php'">Create</button>
             </div>
         </form>
     </div>

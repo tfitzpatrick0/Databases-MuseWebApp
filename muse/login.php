@@ -122,14 +122,5 @@
     <div class="footer">
         <p>MUSE Team 2021</p>
     </div>
-	<!--
-    <h1>Enter Credentials to Edit Database</h1>
-
-	
-
-  <h2>Add a New Moderator</h2>
-  <a href="http://local.muse/add_admin.php" class = "btn btn-outline-success" role="button">Create New Moderator</a>
-
-	-->
 </body>
 </html>
