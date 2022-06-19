@@ -22,7 +22,7 @@ if (isset($_POST['insert_song_name'], $_POST['insert_album_name'], $_POST['inser
 		trim($artist_name, " ") == "" or trim($release_date, " ") == "") {
 				$invalid_req = "One or more search parameters are empty - unable to insert.";
 		} else {
-				$query = mysqli_query($conn, "SELECT * FROM track3 WHERE name = '$song_name' and album = '$album_name' and artist = '$artist_name' and release_date = '$release_date'");
+				$query = mysqli_query($conn, "SELECT * FROM track3 WHERE name = '$song_name' and album = '$album_name' and artists = '$artist_name' and release_date = '$release_date'");
 			
 				if (mysqli_num_rows($query) > 0) {
 						$invalid_req = "The requested song is already in the database - unable to insert.";
