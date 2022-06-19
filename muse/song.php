@@ -7,7 +7,7 @@ $db = "muse";
 $conn = NULL;
 
 try {
-	$conn = mysqli_connect($servername, $username, $password, $db);
+	  $conn = mysqli_connect($servername, $username, $password, $db);
     //echo "Connected successfully";
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
@@ -16,20 +16,20 @@ try {
 $query = mysqli_query($conn, "SELECT * FROM track3 where id ='$id'");
 $results = array();
 while($row = mysqli_fetch_assoc($query)) {
-	array_push($results, $row);
+	  array_push($results, $row);
 }
 
 $pie_query = mysqli_query($conn, "SELECT likes, dislikes FROM youtube_like_dl where id ='$id'");
 $pie = array();
 while($pie_row = mysqli_fetch_assoc($pie_query)) {
-	array_push($pie, $pie_row);
+	  array_push($pie, $pie_row);
 }
 
 //$query = mysqli_query($conn, "SELECT likes, dislikes FROM youtube_l_dl where id ='$id'");
 $info_query = mysqli_query($conn, "SELECT y.album, y.track_number, y.explicit, y.release_date, x.likes, x.dislikes, y.album_id from youtube_like_dl as x, trackexp as y where x.id=y.id and x.id='$id'");
 $info = array();
 while($info_row = mysqli_fetch_assoc($info_query)) {
-	array_push($info, $info_row);
+	  array_push($info, $info_row);
 }
 
 ?>
@@ -41,76 +41,127 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Song Page</title>
-    <link rel="stylesheet" href="css/sty.css">
-	  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>MUSE Song</title>
+    <link rel="stylesheet" href="css/style.css">
+
     <script src="song.js"></script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-
-<style>
-* {
-  box-sizing: border-box;
-}
-
-.row {
-  display: flex;
-  margin-left:-5px;
-  margin-right:-5px;
-}
-
-.column {
-  flex: 50%;
-  padding: 5px;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
-}
-
-th, td {
-  text-align: left;
-  padding: 16px;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-.button5 {border-radius: 50%;}
-</style>
 </head>
 
-<!-- <body class="bkg_im" onload="onPageLoad(<?php print $results[0]['artists']; ?>)"> -->
-<body class="bkg_im" onload="onPageLoad()">
-
+<!-- <body onload="onPageLoad(<?php print $results[0]['artists']; ?>)"> -->
+<body onload="onPageLoad()">
     <header>
-        <div class="container_h">
-        <h3 class="logo">MUSE Song Page</h3>
-
+        <div class="container-h">
+            <h1 class="logo">MUSE Song</h1>
             <nav>
                 <ul>
                     <li><a href="http://local.muse/">Home</a></li>
                     <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
                     <li><a href="http://local.muse/project.html">About</a></li>
                     <li><a href="http://local.muse/login.php">Admin</a></li>
-                    <li><a href="http://local.muse/oauth.php">Login</a></li>
+                    <li><a href="http://local.muse/oauth.php">Spotify</a></li>
                 </ul>
             </nav>
         </div>
+        <div class="black-line"></div>
     </header>
 
-    <h1><?php echo $results[0]['name'] . ' | ' . $results[0]['artists'] ?></h1>
+    <br />
+    <br />
+
+    <div class="song-container">
+        <div class="song-h">
+            <h1><?php echo 'Song: \'' . $results[0]['name'] . '\' by \'' . substr($results[0]['artists'], 2, strlen($results[0]['artists'])-4) . '\'' ?></h1>
+            <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/index.php'">Return to Search</button>
+        </div>
+        <div class="song-body-container">
+            <div class="sb-box">
+                <div class="sb-dropdown-h">
+                    <label for="devices" class="form-label">DEVICES</label>
+                    <button class="button standard-button" type="button" onclick="refreshDevices()">Refresh Devices</button>
+                </div>
+                <select id="devices" class="dropdown-field"></select>
+
+                <div class="sb-options-h">
+                    <h2>PLAY SONG</h2>
+                </div>
+                <div class="sb-options-buttons">
+                    <button class="button standard-button-2" type="button" onclick="play()">Play</button>
+                    <button class="button standard-button-2" type="button" onclick="pause()">Pause</button>
+                </div>
+            </div>
+
+            <div class="sb-box">
+                <div class="sb-dropdown-h">
+                    <label for="playlists" class="form-label">PLAYLISTS</label>
+                    <button class="button standard-button" type="button" onclick="refreshPlaylists()">Refresh Playlists</button>
+                </div>
+                <select id="playlists" class="dropdown-field"></select>
+                <div class="sb-dropdown-h">
+                    <label for="songs" class="form-label">SONGS</label>
+                    <button class="button standard-button" type="button" onclick="displaySongs()">Display Songs</button>
+                </div>
+                <select id="songs" class="dropdown-field"></select>
+
+                <div class="sb-options-h">
+                    <h2><?php echo '\'' . $results[0]['name'] . '\' by \'' . substr($results[0]['artists'], 2, strlen($results[0]['artists'])-4) . '\'' ?></h2>
+                </div>
+                <div class="sb-options-buttons">
+                    <button class="button standard-button-2" type="button" onclick="addSongToPL()">Add to Playlist</button>
+                    <button class="button standard-button-2" type="button" onclick="delSongFromPL()">Delete from Playlist</button>
+                </div>
+            </div>
+
+            <div class="sb-box">
+                <div class="sb-dropdown-h">
+                    <label for="songAttrs" class="form-label">SONG ATTRIBUTES</label>
+                    <button class="button standard-button" type="button" onclick="getSongAttr()">Display Song Attributes</button>
+                </div>
+                <select id="songAttrs" class="dropdown-field"></select>
+
+                <div class="sb-options-h">
+                    <h2>EXPLORE</h2>
+                </div>
+                <div class="sb-options-buttons">
+                    <button class="button standard-button-2" type="button" onclick="createChart()">Bar Chart</button>
+                    <button class="button standard-button-2" type="button" onclick="createPie()">Pie Graph</button>
+                </div>
+            </div>
+
+            <div class="sb-box">
+                <div class="sb-dropdown-h">
+                    <label for="songAttrs" class="form-label">SONG INFORMATION</label>
+                </div>
+
+                <div class="sb-options-h-2">
+                    <h3>Album: <?php echo $info[0]['album']; ?></h3>
+                    <h3>Track Number: <?php echo $info[0]['track_number']; ?></h3>
+                    <h3>Explicit: <?php echo $info[0]['explicit']; ?></h3>
+                    <h3>Release Date: <?php echo $info[0]['release_date']; ?></h3>
+                    <h3>Likes: <?php echo $info[0]['likes']; ?></h3>
+                    <h3>Dislikes: <?php echo $info[0]['dislikes']; ?></h3>
+                </div>
+                <div class="sb-options-buttons">
+                    <button class="button standard-button-2" type="button" onclick="followArtist()">Follow Artist</button>
+                    <button class="button standard-button-2" type="button" onclick="window.location.href = 'https://open.spotify.com/track/<?php print $id; ?>'">Spotify Link</button>
+                    <button class="button standard-button-2" type="button" onclick="window.location.href = 'https://www.youtube.com/results?search_query=<?php print $results[0]['artists']; ?>'">Search Link</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="footer">
+        <p>MUSE Team 2021</p>
+    </div>
 
     <div class="container-fluid">
 
     <div>
-        <button class="btn btn-outline-success" type="submit" onclick="window.location.href = 'http://local.muse/index.php';">Return to Search</button>
     <div class="mb-3">
-        <label for="devices" class="form-label">Devices</label>
+        <label for="devices" class="form-label">DEVICES</label>
         <select id="devices" class="form-control">
         </select>
         <input class="btn btn-primary btn-sm mt-3" type="button" onclick="refreshDevices()" value="Refresh Devices">

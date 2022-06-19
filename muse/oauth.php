@@ -25,7 +25,7 @@
                     <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
                     <li><a href="http://local.muse/project.html">About</a></li>
                     <li><a href="http://local.muse/login.php">Admin</a></li>
-                    <li><a style="font-weight:bold" href="http://local.muse/oauth.php">Login</a></li>
+                    <li><a style="font-weight:bold" href="http://local.muse/oauth.php">Spotify</a></li>
                 </ul>
             </nav>
         </div>
@@ -41,7 +41,7 @@
         </div>
         <br />
         <br />
-        <h1>Continue with Spotify for Advanced Features</h1>
+        <h1>Log in with Spotify to access interactive features.</h1>
         <br />
         <div>
             <button class="button big-button" type="submit" name="button" onclick="requestAuthorization()" value ="Log in with Spotify">Log in with Spotify</button>

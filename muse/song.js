@@ -39,7 +39,7 @@ function onPageLoad(artist) {
 
   let song = document.getElementById("songName").value;
 
-  console.log(artist[0]);
+  // console.log(artist[0]);
   console.log(song);
 
   if (access_token != null) {

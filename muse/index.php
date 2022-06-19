@@ -28,7 +28,7 @@ try {
 
     <script src="app.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+	<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>
 </head>
 
 <body onload="onPageLoad()">
@@ -41,7 +41,7 @@ try {
                     <li><a href="http://local.muse/devplan.html">DevPlan</a></li>
                     <li><a href="http://local.muse/project.html">About</a></li>
                     <li><a href="http://local.muse/login.php">Admin</a></li>
-                    <li><a href="http://local.muse/oauth.php">Login</a></li>
+                    <li><a href="http://local.muse/oauth.php">Spotify</a></li>
                 </ul>
             </nav>
         </div>
@@ -51,14 +51,12 @@ try {
     <br />
 
     <div>
-        <div class="home-search-container">
+        <div class="search-container">
             <div>
-                <h1>Song Search:</h1>
+                <h1>Search Songs:</h1>
             </div>
-            <div class="home-search-form col">
-                <input id="searchText" class="input-text-field" type="text" name="searched_song_name" placeholder="Enter the song name...">
-            </div>
-            <div class="col">
+            <div class="search-form-container">
+                <input id="searchText" class="input-text-field search-input-text" type="text" name="searched_song_name" placeholder="Enter the song name...">
                 <button id="searchButton" class="button standard-button" type="button" onclick="getTable()">Search</button>
             </div>
 

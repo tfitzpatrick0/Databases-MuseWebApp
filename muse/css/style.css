@@ -8,7 +8,7 @@ h3,
 h4,
 h5,
 p {
-  margin: 0;
+  margin: 8px 0;
 }
 
 /* General styles (shared) */
@@ -17,14 +17,11 @@ body {
   height: 100%;
   margin: 10px;
   background-color: white;
-  font-family: "Work Sans", sans-serif;
+  font-family: "Work Sans", monospace;
 }
 
-.col {
-  display: inline-block;
-}
-
-.input-text-field {
+.input-text-field,
+.dropdown-field {
   width: 100%;
   padding: 12px;
   margin: 8px 0;
@@ -34,16 +31,17 @@ body {
 }
 
 .button {
-  border: 1px solid green;
+  border: 1px solid #005c29;
   border-radius: 4px;
-  color: green;
+  color: #005c29;
   background-color: white;
   transition: all ease-in-out 250ms;
+  font-family: "Work Sans", monospace;
 }
 
 .button:hover {
   color: white;
-  background-color: green;
+  background-color: #005c29;
   cursor: pointer;
   transition: all ease-in-out 250ms;
 }
@@ -53,15 +51,27 @@ body {
   margin: 8px 0;
 }
 
+.standard-button-2 {
+  padding: 12px 20px;
+  margin: 8px;
+}
+
 .big-button {
   padding: 24px 40px;
   margin: 8px 0;
   font-size: 130%;
 }
 
+.big-button-2 {
+  padding: 24px 40px;
+  margin: 8px;
+  font-size: 130%;
+}
+
 /* Header (shared) */
 header {
   background-color: #55d6aa;
+  font-family: "Work Sans", sans-serif;
 }
 
 .container-h {
@@ -134,16 +144,20 @@ nav a:hover::before {
   text-align: center;
 }
 
-/* Home - song search */
-.home-search-container {
+/* Query Database (index.php and demo.php) */
+.search-container {
   text-align: left;
 }
 
-.home-search-form {
-  width: 40%;
+.search-form-container {
+  display: flex;
 }
 
-/* Spotify Login - OAuth */
+.search-input-text {
+  margin-right: 10px;
+}
+
+/* Spotify OAuth */
 .spotify-login-container {
   text-align: center;
 }
@@ -151,14 +165,9 @@ nav a:hover::before {
 /* Admin Login */
 .admin-login-container {
   height: 100%;
-  padding: 0 100px;
-}
-
-.admin-login-background {
-  height: 100%;
-  padding: 35px 50px;
+  margin: 0 100px;
+  padding: 30px 45px;
   display: flex;
-  flex-wrap: wrap;
   border-radius: 10px;
   background-color: #ededed;
 }
@@ -172,12 +181,10 @@ nav a:hover::before {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   background-color: white;
-  font-family: "Works Sans", monospace;
 }
 
-.al-display-padding {
-  padding: 70px 70px;
-  flex: 1 1 auto;
+.al-form-padding {
+  padding: 70px;
 }
 
 .al-form-h {
@@ -197,4 +204,68 @@ nav a:hover::before {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   background: linear-gradient(to right, #6efac8, #5df4bb, #31e799, #05df85);
+}
+
+/* Song Display */
+.song-container {
+  height: 100%;
+  margin: 0 100px;
+}
+
+.song-h {
+  display: flex;
+  justify-content: space-between;
+}
+
+.song-h > h1 {
+  text-decoration: underline;
+}
+
+.song-body-container {
+  width: 100%;
+  height: 800px;
+  display: grid;
+  grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+  grid-template-rows: auto auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.sb-box {
+  background-color: #ededed;
+  padding: 30px 45px;
+  border-radius: 10px;
+}
+
+/* Song Dropdown */
+.sb-dropdown-h {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sb-dropdown-h > label {
+  margin: 8px 0 auto 0;
+  font-size: 150%;
+}
+
+/* Song Options */
+
+.sb-options-h {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.sb-options-h-2 {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.sb-options-buttons {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
