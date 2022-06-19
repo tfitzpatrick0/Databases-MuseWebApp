@@ -77,8 +77,7 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
 
     <div class="song-container">
         <div class="song-h">
-            <!-- PHP : trim($row['artists'], "\"[\'\']\"") -->
-            <h1><?php echo 'Song: \'' . $results[0]['name'] . '\' by \'' . substr($results[0]['artists'], 2, strlen($results[0]['artists'])-4) . '\'' ?></h1>
+            <h1><?php echo 'Song: \'' . $results[0]['name'] . '\' by \'' . trim($results[0]['artists'], "\"[\'\']\"") . '\'' ?></h1>
             <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/index.php'">Return to Search</button>
         </div>
         <div class="song-body-container">
@@ -111,7 +110,7 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
                 <select id="songs" class="dropdown-field"></select>
 
                 <div class="sb-options-h">
-                    <h2><?php echo '\'' . $results[0]['name'] . '\' by \'' . substr($results[0]['artists'], 2, strlen($results[0]['artists'])-4) . '\'' ?></h2>
+                    <h2><?php echo '\'' . $results[0]['name'] . '\' by \'' . trim($results[0]['artists'], "\"[\'\']\"") . '\'' ?></h2>
                 </div>
                 <div class="center-content-row">
                     <button class="button standard-button-2" type="button" onclick="addSongToPL()">Add to Playlist</button>
