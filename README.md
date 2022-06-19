@@ -53,10 +53,9 @@ TO DO:
 6. Improve the layout of the demo page $
    6.1. Improve the layout of search/update/delete/insert $
 7. Incorporate better functionality for the add_admin/mods files $
-8. Improve the layout of static html pages?
+8. Improve the layout of static html pages $
 9. Combine app.js and song.js into a single file
 10. Clean up the database and unused files
-11. Rename files to reflect their functionality
 
 FORMATTING:
 
