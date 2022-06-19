@@ -14,8 +14,9 @@ try {
 
 if (isset($_POST['searched_song_name'])) {
 		$song_name = $_POST['searched_song_name'];
+
 		if (trim($song_name, " ") == "") {
-				$empty_param = "The search parameter is empty - displaying the first 300 entries.";
+				$invalid_req = "The search parameter is empty - displaying the first 300 entries.";
 				$query = mysqli_query($conn, "SELECT * FROM track3 LIMIT 300");
 		} else {
 				$query = mysqli_query($conn, "SELECT * FROM track3 WHERE name = '$song_name'");
@@ -24,6 +25,10 @@ if (isset($_POST['searched_song_name'])) {
 		while($row = mysqli_fetch_assoc($query)) {
 				array_push($results, $row);
 		}
+}
+else {
+		header("Location: http://local.muse/");
+		exit;
 }
 $conn->close();
 
@@ -67,7 +72,7 @@ Resources consulted:
 		<br />
 
 		<div class="search-container">
-				<p><?php echo (isset($empty_param)) ? $empty_param : ''; ?></p>
+				<p><?php echo (isset($invalid_req)) ? $invalid_req : ""; ?></p>
 				<table id="songTable"></table>
 		</div>
 

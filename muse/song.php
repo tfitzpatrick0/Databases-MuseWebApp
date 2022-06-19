@@ -77,6 +77,7 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
 
     <div class="song-container">
         <div class="song-h">
+            <!-- PHP : trim($row['artists'], "\"[\'\']\"") -->
             <h1><?php echo 'Song: \'' . $results[0]['name'] . '\' by \'' . substr($results[0]['artists'], 2, strlen($results[0]['artists'])-4) . '\'' ?></h1>
             <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/index.php'">Return to Search</button>
         </div>

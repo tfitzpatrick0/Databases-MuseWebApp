@@ -12,17 +12,30 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
-if (isset($_POST['update_song_id']) and isset($_POST['update_track_number'])) {
+if (isset($_POST['update_song_id'], $_POST['update_track_number'])) {
     $song_id = $_POST['update_song_id'];
     $new_track_num = $_POST['update_track_number'];
 
-    $song_name = mysqli_query($conn, "SELECT name FROM track3 WHERE id = '$song_id'");
-    $old_track_num = mysqli_query($conn, "SELECT track_number FROM track3 WHERE id = '$song_id'");
-    $results = array();
-    array_push($results, mysqli_fetch_assoc($song_name));
-    array_push($results, mysqli_fetch_assoc($old_track_num));
+    if ((trim($song_id, " ") == "") or (trim($new_track_num, " ") == "")) {
+        $invalid_req = "One or more search parameters are empty - unable to update.";
+    } else {
+        $song_name = mysqli_query($conn, "SELECT name FROM track3 WHERE id = '$song_id'");
+        $old_track_num = mysqli_query($conn, "SELECT track_number FROM track3 WHERE id = '$song_id'");
 
-    mysqli_query($conn, "UPDATE track3 SET track_number=$new_track_num WHERE id = '$song_id'");
+        if ((mysqli_num_rows($song_name) == 0) or (mysqli_num_rows($old_track_num) == 0)) {
+            $invalid_req = "The requested song does not match any in the database - unable to update.";
+        } else {
+            $results = array();
+            array_push($results, mysqli_fetch_assoc($song_name));
+            array_push($results, mysqli_fetch_assoc($old_track_num));
+
+            mysqli_query($conn, "UPDATE track3 SET track_number=$new_track_num WHERE id = '$song_id'");
+        }
+    }
+}
+else {
+    header("Location: http://local.muse/");
+    exit;
 }
 
 ?>
@@ -55,10 +68,12 @@ if (isset($_POST['update_song_id']) and isset($_POST['update_track_number'])) {
     <br />
 
     <div class="center-content-col">
-        <h3 style="text-decoration:underline">UPDATING '<?php echo $results[0]['name']; ?>'</h3>
-        <h4>Song ID: <?php echo $song_id; ?></h4>
-        <h4>Old Track Number: <?php echo $results[1]['track_number']; ?></h4>
-        <h4>New Track Number: <?php echo $new_track_num; ?></h4>
+        <?php echo (isset($invalid_req)) ? "<p>" . $invalid_req . "</p>" :
+            "<h3 style=\"text-decoration:underline\">UPDATING THE SONG '" . $results[0]['name'] . "'</h3>" .
+            "<h4>Song ID: " . $song_id . "</h4>" .
+            "<h4>Old Track Number: " . $results[1]['track_number'] . "</h4>" .
+            "<h4>New Track Number: " . $new_track_num . "</h4>"
+        ; ?>
     </div>
 
     <br />

@@ -7,42 +7,36 @@ $db = "muse";
 $conn = NULL;
 
 try {
-	$conn = mysqli_connect($servername, $username, $password, $db);
-} catch (PDOException $e) { }
+		$conn = mysqli_connect($servername, $username, $password, $db);
+} catch (PDOException $e) {
+		echo "Connection failed: " . $e->getMessage();
+}
 
-echo $_POST['delete_song_id'];
 if (isset($_POST['delete_song_id'])) {
-	$song_id = $_POST['delete_song_id'];
-	if (trim($song_id, " ") == "") {
-		header("Location: http://local.muse/demo.php");
-		exit;
-	} else {
-		$query = mysqli_query($conn, "SELECT * FROM track3 WHERE id = '$song_id'");
-		$count = mysqli_num_rows($query);
-		if ($count == 0) {
-			//TODO: display error message "No ID  matches $song_id"
-			echo "<h1>No ID matches $song_id</h1>";
-			//header("Location: http://local.muse/demo.php");
-		} else {
-			echo "To Be Deleted";
-			echo "<table border='1'><tr><th>Song Title</th><th>Song ID</th><th>Album</th><th>Artists</th></tr>";
-			$row = mysqli_fetch_assoc($query);
-			echo "<tr>";
-			echo "<td>" . $row['name'] . "</td>";
-			echo "<td>" . $row['id'] . "</td>";
-			echo "<td>" . $row['album'] . "</td>";
-			echo "<td>" . trim($row['artists'], "\"[\'\']\"") . "</td>";
-			echo "</tr>";
-			echo "</table>";
+		$song_id = $_POST['delete_song_id'];
 
-			$sql_cmd = "DELETE FROM track3 WHERE id = '$song_id'";
-			if ($conn->query($sql_cmd) == TRUE) {
-				echo "Successful deletion";
-			} else {
-				echo "Deletion did not work" . $conn->error;
-			}
+		if (trim($song_id, " ") == "") {
+			$invalid_req = "The search parameter is empty - nothing to delete.";
+		} else {
+				$query = mysqli_query($conn, "SELECT * FROM track3 WHERE id = '$song_id'");
+
+				if (mysqli_num_rows($query) == 0) {
+						$invalid_req = "The requested song does not match any in the database - unable to delete.";
+				} else {
+						$results = mysqli_fetch_assoc($query);
+
+						$sql_cmd = "DELETE FROM track3 WHERE id = '$song_id'";
+						if ($conn->query($sql_cmd) == TRUE) {
+								$delete_msg = "~ SUCCESSFUL DELETION ~";
+						} else {
+								$invalid_req = "Deletion failed - " . $conn->error;
+						}
+				}
 		}
-	}
+}
+else {
+	header("Location: http://local.muse/");
+	exit;
 }
 $conn->close();
 
@@ -79,6 +73,16 @@ Resources consulted:
 
 		<br />
 		<br />
+
+		<div class="center-content-col">
+        <?php echo (isset($invalid_req)) ? "<p>" . $invalid_req . "</p>" :
+            "<h3 style=\"text-decoration:underline\">DELETING THE SONG '" . $results['name'] . "'</h3>" .
+            "<h4>Song ID: " . $results['id'] . "</h4>" .
+            "<h4>Album: " . $results['album'] . "</h4>" .
+            "<h4>Artist(s): " . trim($results['artists'], "\"[\'\']\"") . "</h4>" .
+						"<p>" . $delete_msg . "</p>"
+        ; ?>
+    </div>
 
 		<br />
 		<br />
