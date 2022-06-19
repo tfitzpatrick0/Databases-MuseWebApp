@@ -19,12 +19,12 @@ if (isset($_POST['create_admin_user'], $_POST['create_admin_password'])) {
 		if (trim($username, " ") == "" or trim($password, " ") == "") {
 				$invalid_req = "One or more search parameters are empty - unable to create.";
 		} else {
-				$query = mysqli_query($conn, "SELECT * FROM login_data WHERE username = '$username_entered'");
+				$query = mysqli_query($conn, "SELECT * FROM login_data WHERE username = '$username'");
 
 				if (mysqli_num_rows($query) > 0) {
-						$invalid_req = "The account already exists - unable to create.";
+						$invalid_req = "This username (" . $username . ") already exists - unable to create.";
 				} else {
-						$sql_cmd = "INSERT INTO login_data (username, password) VALUES ('$username_entered', '$password_entered')";
+						$sql_cmd = "INSERT INTO login_data (username, password) VALUES ('$username', '$password')";
 						if ($conn->query($sql_cmd) == TRUE) {
 								$create_msg = "~ SUCCESSFUL CREATION ~";
 						} else {
