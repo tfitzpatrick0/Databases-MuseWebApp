@@ -30,7 +30,6 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Muse Demo</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> -->
 </head>
 
 <body>
@@ -100,6 +99,19 @@ try {
                 <input class="input-text-field search-input-text" type="text" name="insert_artist_name" placeholder="Enter the artist...">
                 <input class="input-text-field search-input-text" type="text" name="insert_release_date" placeholder="Enter the release year...">
                 <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/insert.php'">Insert</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="search-container">
+        <div>
+            <h1>Create New Admin Account:</h1>
+        </div>
+        <form action="http://local.muse/create_admin.php" method="post">
+            <div class="search-form-container">
+                <input class="input-text-field search-input-text" type="text" name="create_admin_user" placeholder="Enter a username...">
+                <input class="input-text-field search-input-text" type="password" name="create_admin_password" placeholder="Enter a password...">
+                <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/create_admin.php'">Create</button>
             </div>
         </form>
     </div>

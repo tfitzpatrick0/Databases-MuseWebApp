@@ -105,10 +105,6 @@
 										<div class="al-form-submit">
 												<button class="button standard-button" type="submit">LOG IN</button>
 										</div>
-										<div class="al-new-account">
-										<p>Don't have an admin account?</p>
-										<a href="http://local.muse/add_admin.php">Create New</a>
-										</div>
 								</form>
 						</div>
 				</div>
@@ -126,14 +122,5 @@
     <div class="footer">
         <p>MUSE Team 2021</p>
     </div>
-	<!--
-    <h1>Enter Credentials to Edit Database</h1>
-
-	
-
-  <h2>Add a New Moderator</h2>
-  <a href="http://local.muse/add_admin.php" class = "btn btn-outline-success" role="button">Create New Moderator</a>
-
-	-->
 </body>
 </html>

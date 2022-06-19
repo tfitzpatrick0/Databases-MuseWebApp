@@ -233,28 +233,28 @@ function tableHeader() {
   removeAllItems("simsongs");
 
   let th_row = document.createElement("tr");
-  let artist_heading = document.createElement("th");
   let song_heading = document.createElement("th");
+  let artist_heading = document.createElement("th");
 
-  artist_heading.innerHTML = "Artist";
   song_heading.innerHTML = "Song";
+  artist_heading.innerHTML = "Artist";
 
-  th_row.appendChild(artist_heading);
   th_row.appendChild(song_heading);
+  th_row.appendChild(artist_heading);
 
   document.getElementById("simsongs").appendChild(th_row);
 }
 
-function tableBody(artist, song) {
+function tableBody(song, artist) {
   let th_row = document.createElement("tr");
-  let artist_body = document.createElement("td");
   let song_body = document.createElement("td");
+  let artist_body = document.createElement("td");
 
-  artist_body.innerHTML = artist;
   song_body.innerHTML = song;
+  artist_body.innerHTML = artist;
 
-  th_row.appendChild(artist_body);
   th_row.appendChild(song_body);
+  th_row.appendChild(artist_body);
 
   document.getElementById("simsongs").appendChild(th_row);
 }
@@ -350,7 +350,6 @@ function dropdownSongs(item) {
 function showSimilarSongs() {
   artist_id = document.getElementById("artistId").value;
   let url = RELARTISTS.replace("{{ArtistId}}", artist_id);
-  tableHeader();
 
   callApi("GET", url, null, handleSimSongs);
 }
@@ -359,8 +358,9 @@ function handleSimSongs() {
   if (this.status == 200) {
     var data = JSON.parse(this.responseText);
     console.log(data);
+    tableHeader();
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       //console.log(data.artists[i].name);
       //console.log(data.artists[i].id);
       topSong(data.artists[i]);
@@ -423,9 +423,9 @@ function handleTopSong() {
     var data = JSON.parse(this.responseText);
     console.log(data);
 
-    let artist = data.tracks[0].artists[0].name;
     let song = data.tracks[0].name;
-    tableBody(artist, song);
+    let artist = data.tracks[0].artists[0].name;
+    tableBody(song, artist);
 
     handle = "got artist top song";
     console.log(handle);
