@@ -105,10 +105,6 @@
 										<div class="al-form-submit">
 												<button class="button standard-button" type="submit">LOG IN</button>
 										</div>
-										<div class="al-new-account">
-										<p>Don't have an admin account?</p>
-										<a href="http://local.muse/add_admin.php">Create New</a>
-										</div>
 								</form>
 						</div>
 				</div>
