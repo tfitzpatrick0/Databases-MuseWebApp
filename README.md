@@ -55,7 +55,8 @@ TO DO:
 8. Incorporate better functionality for the add_admin/mods files $
 9. Improve the layout of static html pages $
 10. Combine app.js and song.js into a single file $
-11. Clean up the database and unused files
+11. Clean up unused files $
+12. Clean up the database
 
 FORMATTING:
 
