@@ -51,6 +51,8 @@ function onPageLoad() {
 }
 
 function onSongPageLoad(artist) {
+  console.log("LOGGING ARTIST");
+  console.log(artist);
   localStorage.setItem("client_id", client_id);
   localStorage.setItem("client_secret", client_secret);
 
