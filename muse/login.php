@@ -66,7 +66,7 @@ if (isset($_POST['Username'], $_POST['Password'])) { // check if both fields fil
 
 		<div class="admin-login-container">
 				<div class="al-form-container al-col">
-						<div class="al-form-padding">
+						<div class="al-padding">
 								<div class="al-form-h">
 										<img src="imgs/M_logo.png" style="width: 185px;" alt="logo">
 										<h2>MUSE ADMIN LOGIN</h4>
@@ -88,9 +88,13 @@ if (isset($_POST['Username'], $_POST['Password'])) { // check if both fields fil
 						</div>
 				</div>
 				<div class="al-message-container al-col">
-						<div class="text-white px-3 py-4 p-md-5 mx-md-4">
-								<h4 class="mb-4">Music statistics with Spotify integration</h4>
-								<p class="small mb-0">Have you ever wanted to know more about the songs you see on Spotify? Create an account or login to get started!</p>
+						<div class="al-padding">
+								<div class="center-content-col">
+										<h4>MUSE Admin Panel</h4>
+										<p>Login to the MUSE Admin Panel to access features related to the MUSE database.</p>
+										<h4>Music statistics with Spotify integration</h4>
+										<p>Have you ever wanted to know more about the songs you see on Spotify? Login to Spotify using the 'Spotify' navigation link to get started!</p>
+								</div>
 						</div>
 				</div>
 		</div>

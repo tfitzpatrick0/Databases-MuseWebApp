@@ -30,7 +30,7 @@ INTERACT WITH DATABASE(s):
 - demo.php -> changed redirects
   - search.php -> changed redirect back to demo
   - update.php -> added redirect back to demo
-  - delete.php -> changed redirect back to demo (needs work)
+  - delete.php -> changed redirect back to demo
   - insert.php -> changed redirect back to demo
 
 SPOTIFY LOGIN PAGE/API CALLS:

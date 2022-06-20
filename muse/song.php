@@ -1,6 +1,5 @@
 <?php
 
-$id = $_GET['song_id'];
 $servername = "localhost";
 $username = "root";
 $password = "stingrays";
@@ -14,28 +13,43 @@ try {
     echo "Connection failed: " . $e->getMessage();
 }
 
-$query = mysqli_query($conn, "SELECT * FROM track3 where id ='$id'");
-$results = array();
-while($row = mysqli_fetch_assoc($query)) {
-	  array_push($results, $row);
-}
+if (isset($_GET['song_id'])) {
+    $id = $_GET['song_id'];
 
-$info_query = mysqli_query($conn, "SELECT y.album, y.track_number, y.explicit, y.release_date, x.likes, x.dislikes, y.album_id from youtube_like_dl as x, track3 as y where x.id=y.id and x.id='$id'");
-$info = array();
-while($info_row = mysqli_fetch_assoc($info_query)) {
-	  array_push($info, $info_row);
-}
+    $query = mysqli_query($conn, "SELECT * FROM track3 where id ='$id'");
 
-$pie_query = mysqli_query($conn, "SELECT likes, dislikes FROM youtube_like_dl where id ='$id'");
-$pie = array();
-while($pie_row = mysqli_fetch_assoc($pie_query)) {
-	  array_push($pie, $pie_row);
-}
+    // Return to home page if the song_id is invalid
+    if (mysqli_num_rows($query) == 0) {
+        header("Location: http://local.muse/");
+        exit;
+    } else {
+        $results = array();
+        while($row = mysqli_fetch_assoc($query)) {
+            array_push($results, $row);
+        }
 
-$song_name = $results[0]['name'];
-$album_id = $info[0]['album_id'];
-$track_number = $info[0]['track_number'];
-$artists = trim($results[0]['artists'], "\"[\'\']\"");
+        $info_query = mysqli_query($conn, "SELECT y.album, y.track_number, y.explicit, y.release_date, x.likes, x.dislikes, y.album_id from youtube_like_dl as x, track3 as y where x.id=y.id and x.id='$id'");
+        $info = array();
+        while($info_row = mysqli_fetch_assoc($info_query)) {
+            array_push($info, $info_row);
+        }
+
+        $pie_query = mysqli_query($conn, "SELECT likes, dislikes FROM youtube_like_dl where id ='$id'");
+        $pie = array();
+        while($pie_row = mysqli_fetch_assoc($pie_query)) {
+            array_push($pie, $pie_row);
+        }
+
+        $song_name = $results[0]['name'];
+        $album_id = $info[0]['album_id'];
+        $track_number = $info[0]['track_number'];
+        $artists = trim($results[0]['artists'], "\"[\'\']\"");
+    }
+}
+else {
+    header("Location: http://local.muse/");
+    exit;
+}
 
 ?>
 
