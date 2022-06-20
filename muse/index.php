@@ -18,7 +18,7 @@ try {
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" href="bkgs/M_logo.png" type="image/icon type">
+    <link rel="icon" href="imgs/M_logo.png" type="image/icon type">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -96,7 +96,7 @@ try {
             $.ajax({
                 type: 'POST',
                 data: {'searched_song_name': searchText},
-                url: 'http://local.muse/requestHandler.php',
+                url: 'http://local.muse/request_handler.php',
                 success:function(response){
                     var data = JSON.parse(response);
                     console.log(data);

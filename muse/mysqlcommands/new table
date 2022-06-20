@@ -12,7 +12,7 @@ enclosed by '"'
 lines terminated by '\n'
 ignore 1 rows;
 
-select x.name, x.likes, x.dislikes, y.name, y.id from youtube_l_dl as x, trackexp as y where x.id=y.id limit 5;
+select x.name, x.likes, x.dislikes, y.name, y.id from youtube_l_dl as x, track3 as y where x.id=y.id limit 5;
 ------
 
 CREATE TABLE youtube_like_dl (

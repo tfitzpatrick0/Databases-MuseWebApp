@@ -20,40 +20,48 @@ while($row = mysqli_fetch_assoc($query)) {
 	  array_push($results, $row);
 }
 
+$info_query = mysqli_query($conn, "SELECT y.album, y.track_number, y.explicit, y.release_date, x.likes, x.dislikes, y.album_id from youtube_like_dl as x, track3 as y where x.id=y.id and x.id='$id'");
+$info = array();
+while($info_row = mysqli_fetch_assoc($info_query)) {
+	  array_push($info, $info_row);
+}
+
 $pie_query = mysqli_query($conn, "SELECT likes, dislikes FROM youtube_like_dl where id ='$id'");
 $pie = array();
 while($pie_row = mysqli_fetch_assoc($pie_query)) {
 	  array_push($pie, $pie_row);
 }
 
-$info_query = mysqli_query($conn, "SELECT y.album, y.track_number, y.explicit, y.release_date, x.likes, x.dislikes, y.album_id from youtube_like_dl as x, trackexp as y where x.id=y.id and x.id='$id'");
-$info = array();
-while($info_row = mysqli_fetch_assoc($info_query)) {
-	  array_push($info, $info_row);
-}
+$song_name = $results[0]['name'];
+$album_id = $info[0]['album_id'];
+$track_number = $info[0]['track_number'];
+$artists = trim($results[0]['artists'], "\"[\'\']\"");
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" href="bkgs/M_logo.png" type="image/icon type">
+    <link rel="icon" href="imgs/M_logo.png" type="image/icon type">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MUSE Song</title>
     <link rel="stylesheet" href="css/style.css">
 
-    <script src="song.js"></script>
+    <script src="app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 </head>
 
-<!-- <body onload="onPageLoad(<?php print $results[0]['artists']; ?>)"> -->
-<body onload="onPageLoad()">
-    <input type="hidden" id="songName" value="<?php print $results[0]['name']; ?>">
-    <input type="hidden" id="albumId" value="<?php echo $info[0]['album_id']; ?>">
-    <input type="hidden" id="trackNum" value="<?php echo $info[0]['track_number']; ?>">
-    <input type="hidden" id="songId" value="<?php print $id; ?>">
+<script>
+    var artists = "<?php echo $artists; ?>";
+</script>
+
+<body onload="onSongPageLoad(artists)">
+    <input type="hidden" id="songName" value="<?php echo $song_name; ?>">
+    <input type="hidden" id="albumId" value="<?php echo $album_id; ?>">
+    <input type="hidden" id="trackNum" value="<?php echo $track_number; ?>">
+    <input type="hidden" id="songId" value="<?php echo $id; ?>">
     <input type="hidden" id="artistId" value="">
 
     <header>
@@ -77,7 +85,7 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
 
     <div class="song-container">
         <div class="song-h">
-            <h1><?php echo 'Song: \'' . $results[0]['name'] . '\' by \'' . trim($results[0]['artists'], "\"[\'\']\"") . '\'' ?></h1>
+            <h1><?php echo 'Song: \'' . $song_name . '\' by \'' . $artists . '\'' ?></h1>
             <button class="button standard-button" type="submit" onclick="window.location.href = 'http://local.muse/index.php'">Return to Search</button>
         </div>
         <div class="song-body-container">
@@ -110,7 +118,7 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
                 <select id="songs" class="dropdown-field"></select>
 
                 <div class="sb-options-h">
-                    <h2><?php echo '\'' . $results[0]['name'] . '\' by \'' . trim($results[0]['artists'], "\"[\'\']\"") . '\'' ?></h2>
+                    <h2><?php echo '\'' . $song_name . '\' by \'' . $artists . '\'' ?></h2>
                 </div>
                 <div class="center-content-row">
                     <button class="button standard-button-2" type="button" onclick="addSongToPL()">Add to Playlist</button>
@@ -145,7 +153,7 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
 
                 <div class="center-content-col">
                     <h3>Album: <?php echo $info[0]['album']; ?></h3>
-                    <h3>Track Number: <?php echo $info[0]['track_number']; ?></h3>
+                    <h3>Track Number: <?php echo $track_number; ?></h3>
                     <h3>Explicit: <?php echo $info[0]['explicit']; ?></h3>
                     <h3>Release Date: <?php echo $info[0]['release_date']; ?></h3>
                     <h3>Likes: <?php echo $info[0]['likes']; ?></h3>
@@ -154,7 +162,7 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
                 <div class="center-content-row">
                     <button class="button standard-button-2" type="button" onclick="followArtist()">Follow Artist</button>
                     <button class="button standard-button-2" type="button" onclick="window.location.href = 'https://open.spotify.com/track/<?php print $id; ?>'">Spotify Link</button>
-                    <button class="button standard-button-2" type="button" onclick="window.location.href = 'https://www.youtube.com/results?search_query=<?php print $results[0]['artists']; ?>'">Search Link</button>
+                    <button class="button standard-button-2" type="button" onclick="window.location.href = 'https://www.youtube.com/results?search_query=<?php print $artists; ?>'">Search Link</button>
                 </div>
             </div>
         </div>

@@ -1,63 +1,42 @@
-
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "stingrays";
-	$db = "muse";
-	$conn = NULL;
+
+$servername = "localhost";
+$username = "root";
+$password = "stingrays";
+$db = "muse";
+$conn = NULL;
 	
-	try {
+try {
 		$conn = mysqli_connect($servername, $username, $password, $db);
 		//echo "Connected successfully";
-	} catch(PDOException $e) {
+} catch(PDOException $e) {
 		echo "Connection failed: " . $e->getMessage();
-	}
+}
 		
-// TODO: Logout
-// TODO: Delete account option once logged in
-// TODO: Maintaining a separate db for each individual user preferences (aka liked songs) and accessing/inserting/updating/deleting from that preferences list
-	$error = "";
-	if (isset($_POST['Username'], $_POST['Password'])) { // check if both fields filled in
+if (isset($_POST['Username'], $_POST['Password'])) { // check if both fields filled in
 		$_SESSION['loggedon'] = '0';
 		$username_entered = mysqli_real_escape_string($conn, $_POST['Username']);
 		$password_entered = mysqli_real_escape_string($conn, $_POST['Password']);
-		//echo "$username_entered, $password_entered";
-		// mysql
+
 		$query = mysqli_query($conn, "SELECT * FROM login_data WHERE username = '$username_entered' and password = '$password_entered'");
 		$count = mysqli_num_rows($query);
-		// if username_entered and password_entered pair available in login_data
-		//TempData["LoggedIn"]='False';
+
 		session_start();
 		if ($count == 1) {
-			$_SESSION['loggedon'] = '1';
-			if ($username_entered == 'admin') {
-				//TODO: admin, admin2, admin3, admin4 etc
-				//echo "You are now on the Admin page";
+				$_SESSION['loggedon'] = '1';
 				header('Location: http://local.muse/demo.php');
-				//echo file_get_contents('http://local.muse/demo.php');
-				//TempData["LoggedIn"]='True';
-			} else {
-				//echo "Howdy $username_entered! Thanks for visiting Muse again!";
-				header('Location: http://local.muse/demo.php');
-			}
 		} else { // if pair not found
 			$_SESSION['loggedon'] = '0';
 			$error = "Incorrect username or password";
-			//echo "<br/>";
-			//echo "<a href = 'http://local.muse/login.php'>Back to login.php</a>";
 		}
-		//unset($_SESSION['loggedon']);
-		//session_destroy();
-		//$_SESSION['loggedon'] = false;
-	}
-	//$_SESSION['loggedon'] = '0';
-	//session_destroy();
+}
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-		<link rel="icon" href="bkgs/M_logo.png" type="image/icon type">
+		<link rel="icon" href="imgs/M_logo.png" type="image/icon type">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -89,7 +68,7 @@
 				<div class="al-form-container al-col">
 						<div class="al-form-padding">
 								<div class="al-form-h">
-										<img src="bkgs/M_logo.png" style="width: 185px;" alt="logo">
+										<img src="imgs/M_logo.png" style="width: 185px;" alt="logo">
 										<h2>MUSE ADMIN LOGIN</h4>
 								</div>
 								<form method="POST">
@@ -100,7 +79,7 @@
 										<div class="al-form-body">
 												<label for="Password">PASSWORD:</label>
 												<input class="input-text-field" type="password" name="Password">
-												<p style="color:red;"><?php echo $error; ?></p>
+												<?php echo (isset($error)) ? "<p style=\"color:red;\">" . $error . "</p>" : ""; ?>
 										</div>
 										<div class="al-form-submit">
 												<button class="button standard-button" type="submit">LOG IN</button>

@@ -41,13 +41,30 @@ function onPageLoad() {
     handleRedirect();
   } else {
     access_token = localStorage.getItem("access_token");
+    refresh_token = localStorage.getItem("refresh_token");
     // Interact with Spotify user if the access token is stored
+
     if (access_token != null) {
       getUserInfo();
-      //refreshPlaylists();
-      //displaySongs();
-      //refreshDevices();
     }
+  }
+}
+
+function onSongPageLoad(artist) {
+  localStorage.setItem("client_id", client_id);
+  localStorage.setItem("client_secret", client_secret);
+
+  access_token = localStorage.getItem("access_token");
+  refresh_token = localStorage.getItem("refresh_token");
+
+  let song = document.getElementById("songName").value;
+  console.log(song);
+
+  if (access_token != null) {
+    getUserInfo();
+    refreshPlaylists();
+    getSongAttr();
+    searchArtist(artist, "artist");
   }
 }
 
