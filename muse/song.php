@@ -162,7 +162,7 @@ $artists = trim($results[0]['artists'], "\"[\'\']\"");
                 <div class="center-content-row">
                     <button class="button standard-button-2" type="button" onclick="followArtist()">Follow Artist</button>
                     <button class="button standard-button-2" type="button" onclick="window.location.href = 'https://open.spotify.com/track/<?php print $id; ?>'">Spotify Link</button>
-                    <button class="button standard-button-2" type="button" onclick="window.location.href = 'https://www.youtube.com/results?search_query=<?php print $results[0]['artists']; ?>'">Search Link</button>
+                    <button class="button standard-button-2" type="button" onclick="window.location.href = 'https://www.youtube.com/results?search_query=<?php print $artists; ?>'">Search Link</button>
                 </div>
             </div>
         </div>
