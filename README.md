@@ -60,6 +60,6 @@ TO DO:
 
 FORMATTING:
 
-1. php section of login.php
+1. php section of login.php $
 
 CMD + SHIFT + R to refresh browser cache
