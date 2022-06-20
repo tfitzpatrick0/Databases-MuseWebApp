@@ -51,8 +51,6 @@ function onPageLoad() {
 }
 
 function onSongPageLoad(artist) {
-  console.log("LOGGING ARTIST");
-  console.log(artist);
   localStorage.setItem("client_id", client_id);
   localStorage.setItem("client_secret", client_secret);
 
@@ -60,8 +58,6 @@ function onSongPageLoad(artist) {
   refresh_token = localStorage.getItem("refresh_token");
 
   let song = document.getElementById("songName").value;
-
-  // console.log(artist[0]);
   console.log(song);
 
   if (access_token != null) {
