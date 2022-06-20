@@ -60,6 +60,7 @@ Resources consulted:
 -->
 
 <!DOCTYPE html>
+<html>
 <head>
 		<link rel="icon" href="imgs/M_logo.png" type="image/icon type">
     <meta charset="utf-8">
