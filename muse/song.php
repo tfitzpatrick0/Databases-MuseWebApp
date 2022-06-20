@@ -44,12 +44,12 @@ while($info_row = mysqli_fetch_assoc($info_query)) {
     <title>MUSE Song</title>
     <link rel="stylesheet" href="css/style.css">
 
-    <script src="song.js"></script>
+    <script src="app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 </head>
 
 <!-- <body onload="onPageLoad(<?php print $results[0]['artists']; ?>)"> -->
-<body onload="onPageLoad()">
+<body onload="onSongPageLoad()">
     <input type="hidden" id="songName" value="<?php print $results[0]['name']; ?>">
     <input type="hidden" id="albumId" value="<?php echo $info[0]['album_id']; ?>">
     <input type="hidden" id="trackNum" value="<?php echo $info[0]['track_number']; ?>">

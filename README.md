@@ -54,7 +54,7 @@ TO DO:
 7. Improve the layout of search/update/delete/insert $
 8. Incorporate better functionality for the add_admin/mods files $
 9. Improve the layout of static html pages $
-10. Combine app.js and song.js into a single file
+10. Combine app.js and song.js into a single file $
 11. Clean up the database and unused files
 
 FORMATTING:
