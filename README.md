@@ -56,7 +56,7 @@ TO DO:
 9. Improve the layout of static html pages $
 10. Combine app.js and song.js into a single file $
 11. Clean up unused files $
-12. Clean up the database
+12. Clean up the database - drop track2, tracks_features $
 
 FORMATTING:
 

@@ -20,7 +20,7 @@ while($row = mysqli_fetch_assoc($query)) {
 	  array_push($results, $row);
 }
 
-$info_query = mysqli_query($conn, "SELECT y.album, y.track_number, y.explicit, y.release_date, x.likes, x.dislikes, y.album_id from youtube_like_dl as x, trackexp as y where x.id=y.id and x.id='$id'");
+$info_query = mysqli_query($conn, "SELECT y.album, y.track_number, y.explicit, y.release_date, x.likes, x.dislikes, y.album_id from youtube_like_dl as x, track3 as y where x.id=y.id and x.id='$id'");
 $info = array();
 while($info_row = mysqli_fetch_assoc($info_query)) {
 	  array_push($info, $info_row);
