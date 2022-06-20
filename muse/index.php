@@ -96,7 +96,7 @@ try {
             $.ajax({
                 type: 'POST',
                 data: {'searched_song_name': searchText},
-                url: 'http://local.muse/requestHandler.php',
+                url: 'http://local.muse/request_handler.php',
                 success:function(response){
                     var data = JSON.parse(response);
                     console.log(data);
