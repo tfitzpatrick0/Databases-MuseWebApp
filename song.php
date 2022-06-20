@@ -7,7 +7,7 @@ $db = "muse";
 $conn = NULL;
 
 try {
-	  $conn = mysqli_connect($servername, $username, $password, $db);
+	$conn = mysqli_connect($servername, $username, $password, $db);
     //echo "Connected successfully";
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
