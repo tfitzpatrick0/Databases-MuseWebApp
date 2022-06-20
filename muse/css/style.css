@@ -196,7 +196,8 @@ nav a:hover::before {
   background-color: white;
 }
 
-.al-form-padding {
+.al-padding {
+  margin: auto 0;
   padding: 70px;
 }
 
