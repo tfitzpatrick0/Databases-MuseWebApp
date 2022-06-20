@@ -51,11 +51,11 @@ TO DO:
 4. Improve the layout of the Spotify login page $
 5. Improve the layout of the admin login page $ --> (NEED TO REWORK ADD_ADMIN/MODS, AND LAYOUT OF INFO MSG)
 6. Improve the layout of the demo page $
-   6.1. Improve the layout of search/update/delete/insert $
-7. Incorporate better functionality for the add_admin/mods files $
-8. Improve the layout of static html pages $
-9. Combine app.js and song.js into a single file
-10. Clean up the database and unused files
+7. Improve the layout of search/update/delete/insert $
+8. Incorporate better functionality for the add_admin/mods files $
+9. Improve the layout of static html pages $
+10. Combine app.js and song.js into a single file
+11. Clean up the database and unused files
 
 FORMATTING:
 

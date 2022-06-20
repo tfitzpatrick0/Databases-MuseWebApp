@@ -57,7 +57,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<link rel="icon" href="bkgs/M_logo.png" type="image/icon type">
+		<link rel="icon" href="imgs/M_logo.png" type="image/icon type">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -89,7 +89,7 @@
 				<div class="al-form-container al-col">
 						<div class="al-form-padding">
 								<div class="al-form-h">
-										<img src="bkgs/M_logo.png" style="width: 185px;" alt="logo">
+										<img src="imgs/M_logo.png" style="width: 185px;" alt="logo">
 										<h2>MUSE ADMIN LOGIN</h4>
 								</div>
 								<form method="POST">
