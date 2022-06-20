@@ -41,9 +41,15 @@ if (isset($_GET['song_id'])) {
         }
 
         $song_name = $results[0]['name'];
-        $album_id = $info[0]['album_id'];
-        $track_number = $info[0]['track_number'];
         $artists = trim($results[0]['artists'], "\"[\'\']\"");
+
+        $album_id = $info[0]['album_id'];
+        $album_name = $info[0]['album'];
+        $track_number = $info[0]['track_number'];
+        $explicit = ($info[0]['explicit'] == 0) ? "No" : "Yes";
+        $release_date = $info[0]['release_date'];
+        $likes = $info[0]['likes'];
+        $dislikes = $info[0]['dislikes'];
     }
 }
 else {
@@ -166,12 +172,12 @@ else {
                 </div>
 
                 <div class="center-content-col">
-                    <h3>Album: <?php echo $info[0]['album']; ?></h3>
+                    <h3>Album: <?php echo $album_name; ?></h3>
                     <h3>Track Number: <?php echo $track_number; ?></h3>
-                    <h3>Explicit: <?php echo $info[0]['explicit']; ?></h3>
-                    <h3>Release Date: <?php echo $info[0]['release_date']; ?></h3>
-                    <h3>Likes: <?php echo $info[0]['likes']; ?></h3>
-                    <h3>Dislikes: <?php echo $info[0]['dislikes']; ?></h3>
+                    <h3>Explicit: <?php echo $explicit; ?></h3>
+                    <h3>Release Date: <?php echo $release_date; ?></h3>
+                    <h3>Likes: <?php echo $likes; ?></h3>
+                    <h3>Dislikes: <?php echo $dislikes; ?></h3>
                 </div>
                 <div class="center-content-row">
                     <button class="button standard-button-2" type="button" onclick="followArtist()">Follow Artist</button>
