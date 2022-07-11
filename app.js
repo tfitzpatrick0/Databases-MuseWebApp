@@ -1,7 +1,5 @@
 var redirect_uri = "http://local.muse/";
 
-// var client_id = "094baaf717e948fc8ea9796c36c98fb7";
-// var client_secret = "f9bde4669bb549aba1eba857be63b783";
 var client_id = "41a7eeddd27f4614ad05359d0043a201";
 var client_secret = "41d4686cab51498f89c26b1aff0426e6";
 
