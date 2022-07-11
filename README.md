@@ -2,4 +2,4 @@
 
 Spotify API and music database webapp
 
-![some discription](./databases_final_report.pdf)
+[Final Report](./databases_final_report.pdf)
